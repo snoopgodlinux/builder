@@ -381,7 +381,7 @@ function systemconfig()
 
 	# Configure `plymouth`
 	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/glowing /usr/share/plymouth/themes/
-	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/glowing/glowing.plymouth" 160
+	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/glowing/glowing.plymouth" 150
 	update-initramfs -u
 
 	# Copy `ubiquity`
