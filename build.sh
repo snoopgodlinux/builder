@@ -98,6 +98,13 @@ function linuxkernel()
 	apt-get -y install linux-generic
 }
 
+## Setup Plymouth Themes
+## ---------------------
+function plymouththemes()
+{
+	apt-get -y install plymouth-themes
+}
+
 ## ----------------- ##
 ## INSTALL LIBRARIES ##
 ## ----------------- ##
@@ -143,13 +150,6 @@ function installperl()
 function install7zip()
 {
 	apt-get -y install p7zip p7zip-full p7zip-rar
-}
-
-## Install `Plymouth-Themes`
-## ------------------------
-function installplymouth()
-{
-	apt-get -y install plymouth-themes
 }
 
 ## ----------------------- ##
@@ -539,6 +539,7 @@ function launch()
 	aptsources
 	removeunwanted
 	linuxkernel
+	plymouththemes
 	systemupdate
 
 	# Install Libraries
@@ -547,7 +548,6 @@ function launch()
 	installqt6
 	installruby
 	installperl
-	installplymouth
 	systemupdate
 
 	# Install Native Packages
