@@ -381,8 +381,8 @@ function systemconfig()
 	chmod +x /usr/share/snoopgod/usr/bin/upgrader
 
 	# Configure `plymouth`
-	rm -f /usr/share/plymouth/themes/ubuntu-logo.png
-	cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/themes/
+	rm -f /usr/share/plymouth/ubuntu-logo.png
+	cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
 	rm -rf /usr/share/plymouth/themes/spinner/
 	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
 	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 200
