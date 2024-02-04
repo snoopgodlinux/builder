@@ -548,6 +548,7 @@ function launch()
 	installqt6
 	installruby
 	installperl
+	install7zip
 	systemupdate
 
 	# Install Native Packages
