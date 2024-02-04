@@ -380,8 +380,11 @@ function systemconfig()
 	chmod +x /usr/share/snoopgod/usr/bin/upgrader
 
 	# Configure `plymouth`
-	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/glowing /usr/share/plymouth/themes/
-	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/glowing/glowing.plymouth" 150
+	rm -f /usr/share/plymouth/themes/ubuntu-logo.png
+	cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/themes/
+	rm -rf /usr/share/plymouth/themes/spinner/
+	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
+	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 150
 	update-initramfs -u
 
 	# Copy `ubiquity`
