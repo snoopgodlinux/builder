@@ -380,14 +380,8 @@ function systemconfig()
 	chmod +x /usr/share/snoopgod/usr/bin/upgrader
 
 	# Configure `plymouth`
-	update-alternatives --remove default.plymouth /usr/share/plymouth/themes/kubuntu-logo/kubuntu-logo.plymouth
-	update-alternatives --remove default.plymouth /usr/share/plymouth/themes/bgrt/bgrt.plymouth
-	rm -rf /usr/share/plymouth/themes/kubuntu-logo/
-	rm -rf /usr/share/plymouth/themes/bgrt/
 	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/glowing /usr/share/plymouth/themes/
-	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/glowing/glowing.plymouth" 110
-
-	# Update `initframs`
+	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/glowing/glowing.plymouth" 160
 	update-initramfs -u
 
 	# Copy `ubiquity`
