@@ -145,9 +145,23 @@ function install7zip()
 	apt-get -y install p7zip p7zip-full p7zip-rar
 }
 
+## Install `Plymouth-Themes`
+## ------------------------
+function installplymouth()
+{
+	apt-get -y install plymouth-themes
+}
+
 ## ----------------------- ##
 ## INSTALL NATIVE PACKAGES ##
 ## ----------------------- ##
+
+## Install missing fonts
+## ---------------------
+function installfonts()
+{
+	apt-get -y fonts-dejavu fonts-cantarell
+}
 
 ## Install common packages
 ## -----------------------
@@ -533,10 +547,11 @@ function launch()
 	installqt6
 	installruby
 	installperl
-	install7zip
+	installplymouth
 	systemupdate
 
 	# Install Native Packages
+	installfonts
 	installcommons
 	installcracking
 	installexploitation
