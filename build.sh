@@ -50,6 +50,13 @@ function exportenv()
 	export PYTHONWARNINGS=ignore
 }
 
+## Build temporary working directory
+## ---------------------------------
+function workdir()
+{
+	mkdir -p /tmp/snoopgod/
+}
+
 ## Configure APT sources
 ## ---------------------
 function aptsources()
@@ -317,9 +324,6 @@ function installzaproxy()
 ## ------------------
 function buildpackages()
 {
-	# Build temporary directory
-	mkdir -p /tmp/snoopgod/
-
 	# Retrieve packages repository
 	wget -O "/tmp/packages-main.zip" "https://codeload.github.com/snoopgod-linux/packages/zip/refs/heads/main"
 	unzip /tmp/packages-main.zip -d /tmp/snoopgod/
@@ -339,9 +343,6 @@ function buildpackages()
 ## ----------------
 function systemconfig()
 {
-	# Build temporary directory
-	mkdir -p /tmp/snoopgod/
-
 	# Retrieve system repository
 	wget -O "/tmp/system-main.zip" "https://codeload.github.com/snoopgod-linux/system/zip/refs/heads/main"
 	unzip /tmp/system-main.zip -d /tmp/snoopgod/
@@ -384,8 +385,8 @@ function systemconfig()
 	cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/themes/
 	rm -rf /usr/share/plymouth/themes/spinner/
 	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
-	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 150
-	update-initramfs -u
+	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 200
+	update-initramfs -u -k all
 
 	# Copy `ubiquity`
 	rm -rf /usr/lib/ubiquity/
@@ -520,6 +521,7 @@ function launch()
 	clearscreen
 	checkinternet
 	exportenv
+	workdir
 	aptsources
 	removeunwanted
 	linuxkernel
