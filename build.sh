@@ -98,13 +98,6 @@ function linuxkernel()
 	apt-get -y install linux-generic
 }
 
-## Setup Plymouth Themes
-## ---------------------
-function plymouththemes()
-{
-	apt-get -y install plymouth-themes
-}
-
 ## ----------------- ##
 ## INSTALL LIBRARIES ##
 ## ----------------- ##
@@ -155,13 +148,6 @@ function install7zip()
 ## ----------------------- ##
 ## INSTALL NATIVE PACKAGES ##
 ## ----------------------- ##
-
-## Install missing fonts
-## ---------------------
-function installfonts()
-{
-	apt-get -y fonts-dejavu fonts-cantarell
-}
 
 ## Install common packages
 ## -----------------------
@@ -539,7 +525,6 @@ function launch()
 	aptsources
 	removeunwanted
 	linuxkernel
-	plymouththemes
 	systemupdate
 
 	# Install Libraries
@@ -552,7 +537,6 @@ function launch()
 	systemupdate
 
 	# Install Native Packages
-	installfonts
 	installcommons
 	installcracking
 	installexploitation
