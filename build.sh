@@ -145,6 +145,13 @@ function install7zip()
 	apt-get -y install p7zip p7zip-full p7zip-rar
 }
 
+## Install `Fonts`
+## --------------
+function installfonts()
+{
+	apt-get -y install fonts-dejavu
+}
+
 ## ----------------------- ##
 ## INSTALL NATIVE PACKAGES ##
 ## ----------------------- ##
@@ -534,6 +541,7 @@ function launch()
 	installruby
 	installperl
 	install7zip
+	installfonts
 	systemupdate
 
 	# Install Native Packages
