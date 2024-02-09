@@ -383,10 +383,10 @@ function systemconfig()
 	cp /tmp/snoopgod/system/usr/local/bin/snoopgod /usr/local/bin/
 	chmod +x /usr/local/bin/snoopgod
 	cp -r /tmp/snoopgod/system/usr/share/snoopgod /usr/share/
-	chmod +x /usr/share/snoopgod/usr/bin/cleaner
 	chmod +x /usr/share/snoopgod/usr/bin/updater
 	chmod +x /usr/share/snoopgod/usr/bin/upgrader
-	chmod +x /usr/share/snoopgod/usr/bin/wipeall
+	chmod +x /usr/share/snoopgod/usr/bin/ucleaner
+	chmod +x /usr/share/snoopgod/usr/bin/rcleaner
 
 	# Configure `plymouth`
 	rm -f /usr/share/plymouth/ubuntu-logo.png
