@@ -160,7 +160,7 @@ function installfonts()
 ## -----------------------
 function installcommons()
 {
-	apt-get -y install abootimg android-sdk apache2 apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap default-jdk default-jre dirmngr dkms dos2unix dpkg-sig easytag fuse3 fwbuilder g++ gcc gconf2 ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools net-tools ninja-build openvpn pkg-config proxychains qemu rake rename reprepro rhythmbox screen screenfetch secure-delete sendemail simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic terminator tor tree wget xorriso
+	apt-get -y install abootimg android-sdk apache2 apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap default-jdk default-jre dirmngr dkms dos2unix dpkg-sig easytag fuse3 fwbuilder g++ gcc gconf2 ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools net-tools ninja-build openvpn pkg-config proxychains qemu rake rename reprepro rhythmbox screen screenfetch secure-delete sendemail simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic terminator tor trash-cli tree wget xorriso
 }
 
 ## Install cracking tools
@@ -386,6 +386,7 @@ function systemconfig()
 	chmod +x /usr/share/snoopgod/usr/bin/cleaner
 	chmod +x /usr/share/snoopgod/usr/bin/updater
 	chmod +x /usr/share/snoopgod/usr/bin/upgrader
+	chmod +x /usr/share/snoopgod/usr/bin/wipeall
 
 	# Configure `plymouth`
 	rm -f /usr/share/plymouth/ubuntu-logo.png
