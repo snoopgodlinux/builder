@@ -422,18 +422,25 @@ function systemconfig()
 	# Import applications desktop
 	cp /tmp/snoopgod/system/usr/share/applications/* /usr/share/applications/
 
-	# Change screenfetch
+	# Change Screenfetch
 	rm -f /usr/bin/screenfetch
 	cp /tmp/snoopgod/system/usr/bin/screenfetch /usr/bin/
 	chmod +x /usr/bin/screenfetch
 
-	# Edit LSB Release
+	# Copy `lsb-release` configuration
 	rm -f /etc/lsb-release
 	cp /tmp/snoopgod/system/etc/lsb-release /etc/
 
 	# Copy wallpapers
 	rm -rf /usr/share/wallpapers/Next/
 	cp -r /tmp/snoopgod/system/usr/share/wallpapers/* /usr/share/wallpapers/
+
+	# Copy `proxychains` configuration
+	rm -f /etc/proxychains.com
+	cp /tmp/snoopgod/system/etc/proxychains.com /etc/
+	rm -f /usr/bin/proxychains
+	cp /tmp/snoopgod/system/usr/bin/proxychains /usr/bin/
+
 
 	# Remove launchers
 	rm -rf /usr/share/applications/kde4
