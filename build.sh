@@ -113,7 +113,7 @@ function installlibs()
 ## ----------------
 function installpython()
 {
-	apt-get -y install python3-flask python3-future python3-geoip python3-httplib2 python3-numpy python3-paramiko python3-pip python3-psutil python3-pycurl python3-pyqt5 python3-requests python3-scapy python3-scipy python3-setuptools python3-urllib3 python3-virtualenv python3-wheel
+	apt-get -y install python3-flask python3-future python3-geoip python3-httplib2 python3-nmap python3-numpy python3-paramiko python3-pip python3-psutil python3-pycurl python3-pyqt5 python3-requests python3-scapy python3-scipy python3-setuptools python3-urllib3 python3-virtualenv python3-wheel
 	ln -s /usr/bin/python3 /usr/bin/python
 }
 
@@ -160,7 +160,7 @@ function installfonts()
 ## -----------------------
 function installcommons()
 {
-	apt-get -y install abootimg android-sdk apache2 apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap default-jdk default-jre dirmngr dkms dos2unix dpkg-sig easytag fuse3 fwbuilder g++ gcc gconf2 ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools net-tools ninja-build okular openvpn pkg-config proxychains qemu rake rename reprepro rhythmbox screen screenfetch secure-delete sendemail simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic terminator tor trash-cli tree vlc wget xorriso
+	apt-get -y install abootimg android-sdk apache2 apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap default-jdk default-jre dirmngr dkms dos2unix dpkg-sig easytag fuse3 fwbuilder g++ gcc gconf2 ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools net-tools ninja-build okular openvpn pkg-config postfix proxychains qemu rake rename reprepro rhythmbox screen screenfetch secure-delete sendemail simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic terminator tor trash-cli tree vlc wget xorriso
 }
 
 ## Install cracking tools
