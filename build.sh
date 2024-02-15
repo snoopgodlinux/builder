@@ -71,9 +71,9 @@ function aptsources()
 ## ----------------
 function systemupdate()
 {
-	apt-get -y update && apt -y upgrade && apt -y dist-upgrade
-	apt-get -y remove && apt -y autoremove
-	apt-get -y clean && apt -y autoclean
+	apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+	apt-get -y remove && apt-get -y autoremove
+	apt-get -y clean && apt-get -y autoclean
 }
 
 ## Disable error reporting
