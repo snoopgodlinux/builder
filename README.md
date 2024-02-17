@@ -3,7 +3,7 @@
 In a virtual ```chroot``` environment simply run the following command:
 
 ```shell
-cd /tmp/ && wget -O - https://raw.githubusercontent.com/snoopgod-linux/builder/main/build.sh | bash
+cd /tmp/ && wget -O - https://raw.githubusercontent.com/snoopgodlinux/builder/main/build.sh | bash
 ```
 
 ### References

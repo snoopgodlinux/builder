@@ -268,7 +268,7 @@ function installburpsuite()
 	dpkg -i /tmp/jdk-17_linux-x64_bin.deb && dpkg -i /tmp/jdk-21_linux-x64_bin.deb
 	apt-get -y install openjdk-17-jdk openjdk-17-jre openjdk-21-jdk openjdk-21-jre
 	wget -O "/tmp/burpsuite.sh" "https://portswigger-cdn.net/burp/releases/download?product=community&type=Linux"
-	wget -O "/tmp/burpsuite.txt" "https://raw.githubusercontent.com/snoopgod-linux/system/main/tmp/burpsuite.txt"
+	wget -O "/tmp/burpsuite.txt" "https://raw.githubusercontent.com/snoopgodlinux/system/main/tmp/burpsuite.txt"
 	chmod +x /tmp/burpsuite.sh && cat "/tmp/burpsuite.txt" | /tmp/burpsuite.sh
 }
 
@@ -318,7 +318,7 @@ function installtorbrowser()
 function installzaproxy()
 {
 	wget -O "/tmp/zaproxy.sh" "https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_2_14_0_unix.sh"
-	wget -O "/tmp/zaproxy.txt" "https://raw.githubusercontent.com/snoopgod-linux/system/main/tmp/zaproxy.txt"
+	wget -O "/tmp/zaproxy.txt" "https://raw.githubusercontent.com/snoopgodlinux/system/main/tmp/zaproxy.txt"
 	chmod +x /tmp/zaproxy.sh && cat "/tmp/zaproxy.txt" | /tmp/zaproxy.sh
 }
 
@@ -331,7 +331,7 @@ function installzaproxy()
 function buildpackages()
 {
 	# Retrieve packages repository
-	wget -O "/tmp/packages-main.zip" "https://codeload.github.com/snoopgod-linux/packages/zip/refs/heads/main"
+	wget -O "/tmp/packages-main.zip" "https://codeload.github.com/snoopgodlinux/packages/zip/refs/heads/main"
 	unzip /tmp/packages-main.zip -d /tmp/snoopgod/
 	mv /tmp/snoopgod/packages-main/ /tmp/snoopgod/packages/
 
@@ -350,7 +350,7 @@ function buildpackages()
 function systemconfig()
 {
 	# Retrieve system repository
-	wget -O "/tmp/system-main.zip" "https://codeload.github.com/snoopgod-linux/system/zip/refs/heads/main"
+	wget -O "/tmp/system-main.zip" "https://codeload.github.com/snoopgodlinux/system/zip/refs/heads/main"
 	unzip /tmp/system-main.zip -d /tmp/snoopgod/
 	mv /tmp/snoopgod/system-main/ /tmp/snoopgod/system/
 
