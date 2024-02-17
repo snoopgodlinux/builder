@@ -409,6 +409,10 @@ function systemconfig()
 	rm -rf /usr/share/ubiquity-slideshow/
 	cp -r /tmp/snoopgod/system/usr/share/ubiquity-slideshow /usr/share/
 
+	# Edit Grub
+	sed -i "s/GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"/GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash loglevel=3\"/" /etc/default/grub
+	update-grub
+
 		# Copy the SnoopGod logo
 	cp -r /tmp/snoopgod/system/usr/share/logos /usr/share
 
