@@ -87,7 +87,7 @@ function disableapport()
 ## ------------------------
 function removeunwanted()
 {
-	apt-get -y purge --auto-remove elisa gstreamer1.0-vaapi kcalc kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* muon skanlite thunderbird transmission vlc xterm
+	apt-get -y purge --auto-remove elisa gstreamer1.0-vaapi kcalc kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* muon skanlite thunderbird transmission xterm
 }
 
 ## Configure Linux generic kernel
@@ -159,7 +159,7 @@ function installfonts()
 ## -----------------------
 function installcommons()
 {
-	apt-get -y install abootimg android-sdk apache2 apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap default-jdk default-jre dirmngr dkms dos2unix dpkg-sig easytag fuse3 fwbuilder g++ gcc gconf2 ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mailutils mtools natpmpc net-tools ninja-build openvpn pkg-config postfix proxychains qemu rake rename reprepro rhythmbox screen screenfetch secure-delete sendemail simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli tree vlc wireguard wget xorriso
+	apt-get -y install abootimg android-sdk apache2 apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap default-jdk default-jre dirmngr dkms dos2unix dpkg-sig easytag fuse3 fwbuilder g++ gcc gconf2 ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mailutils mtools natpmpc net-tools ninja-build openvpn pkg-config postfix proxychains qemu rake rename reprepro rhythmbox screen screenfetch secure-delete sendemail simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli tree wireguard wget xorriso
 }
 
 ## Install cracking tools
@@ -409,11 +409,7 @@ function systemconfig()
 	rm -rf /usr/share/ubiquity-slideshow/
 	cp -r /tmp/snoopgod/system/usr/share/ubiquity-slideshow /usr/share/
 
-	# Edit Grub
-	sed -i "s/GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash\"/GRUB_CMDLINE_LINUX_DEFAULT=\"quiet splash loglevel=3\"/" /etc/default/grub
-	update-grub
-
-		# Copy the SnoopGod logo
+	# Copy the SnoopGod logo
 	cp -r /tmp/snoopgod/system/usr/share/logos /usr/share
 
 	# Copy `sddm` theme
@@ -442,8 +438,8 @@ function systemconfig()
 	cp -r /tmp/snoopgod/system/usr/share/wallpapers/* /usr/share/wallpapers/
 
 	# Copy `proxychains` configuration
-	rm -f /etc/proxychains.com
-	cp /tmp/snoopgod/system/etc/proxychains.com /etc/
+	rm -f /etc/proxychains.conf
+	cp /tmp/snoopgod/system/etc/proxychains.conf /etc/
 	rm -f /usr/bin/proxychains
 	cp /tmp/snoopgod/system/usr/bin/proxychains /usr/bin/
 
@@ -485,7 +481,7 @@ function systemkdebuild()
 	# Move KDE configuration files to Skeleton folder
 	mv $HOME/.config/gtkrc /etc/skel/.config/
 	mv $HOME/.config/gtkrc-2.0 /etc/skel/.config/
-	mv $HOME/.config/kdedefaults/ /etc/skel/.config/
+	mv $HOME/.config/kdedefaults/* /etc/skel/.config/kdedefaults/
 	mv $HOME/.config/kdeglobals /etc/skel/.config/
 	mv $HOME/.config/plasmarc /etc/skel/.config/
 	mv $HOME/.config/Trolltech.conf /etc/skel/.config/
