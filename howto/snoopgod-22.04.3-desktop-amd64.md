@@ -2,7 +2,13 @@
 
 #### PREPARE ENVIRONMENT
 
-**Export `Python` Environment**
+**Move to `tmp` directory**
+
+```shell
+cd /tmp/
+```
+
+**Export `Python` environment**
 
 ```shell
 export PYTHONWARNINGS=ignore

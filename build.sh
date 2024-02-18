@@ -43,7 +43,14 @@ function checkinternet()
 	fi
 }
 
-## Export `Python` Environment
+## Move to `tmp` directory
+## -----------------------
+function movetotmp()
+{
+	cd /tmp/
+}
+
+## Export `Python` environment
 ## ---------------------------
 function exportenv()
 {
@@ -338,7 +345,7 @@ function buildpackages()
 	# Switch to packages directory
 	cd /tmp/snoopgod/packages/
 	chmod +x deb.sh && ./deb.sh
-	cd build && dpkg -i *.deb && cd /root/
+	cd build && dpkg -i *.deb && cd /tmp/
 }
 
 ## ------------ ##
@@ -536,6 +543,7 @@ function launch()
 	# Prepare Environment
 	clearscreen
 	checkinternet
+	movetotmp
 	exportenv
 	workdir
 	aptsources
