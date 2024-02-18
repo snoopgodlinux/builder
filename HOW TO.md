@@ -1,4 +1,6 @@
-## PREPARE ENVIRONMENT
+## Manual setup
+
+#### PREPARE ENVIRONMENT
 
 **Export `Python` Environment**
 
@@ -49,7 +51,7 @@ apt-get -y install linux-generic
 
 * * *
 
-## INSTALL LIBRARIES
+#### INSTALL LIBRARIES
 
 **Install system libraries**
 
@@ -96,7 +98,7 @@ apt-get -y install fonts-dejavu
 
 * * *
 
-## INSTALL NATIVE PACKAGES
+#### INSTALL NATIVE PACKAGES
 
 **Install common packages**
 
@@ -193,7 +195,7 @@ apt-get -y clean && apt-get -y autoclean
 
 * * *
 
-## INSTALL EXTRAS PACKAGES
+#### INSTALL EXTRAS PACKAGES
 
 **Install `Beef-XSS`**
 
@@ -259,7 +261,7 @@ chmod +x /tmp/zaproxy.sh && cat "/tmp/zaproxy.txt" | /tmp/zaproxy.sh
 
 * * *
 
-## INSTALL EXTRAS PACKAGES
+#### INSTALL EXTRAS PACKAGES
 
 **Build Deb packages**
 
@@ -274,7 +276,7 @@ cd build && dpkg -i *.deb && cd /tmp/
 
 * * *
 
-## SETUP SYSTEM
+#### SETUP SYSTEM
 
 **Retrieve system repository**
 
@@ -455,7 +457,7 @@ rm -f /usr/share/applications/*-zap.sh.desktop
 
 * * *
 
-## EDIT KDE CONFIG FILES
+#### EDIT KDE CONFIG FILES
 
 **Export `offscreen` environment**
 
@@ -509,7 +511,7 @@ kwriteconfig5 --file /etc/skel/.config/kwalletrc --group "Wallet" --key "Enabled
 
 * * *
 
-## CLEAN SYSTEM
+#### CLEAN SYSTEM
 
 **Clean `tmp` directory**
 
