@@ -230,6 +230,7 @@ function installutils()
 function installsnoofing()
 {
 	apt-get -y install bettercap chaosreader ettercap-common ettercap-graphical wireshark
+	chmod +x /usr/bin/dumpcap
 }
 
 ## Install stress testing tools
