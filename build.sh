@@ -76,7 +76,7 @@ function aptsources()
 
 ## Keep system safe
 ## ----------------
-function systemupdate()
+function systemsafe()
 {
 	apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
 	apt-get -y remove && apt-get -y autoremove
@@ -265,6 +265,18 @@ function installwireless()
 ## ----------------------- ##
 ## INSTALL EXTRAS PACKAGES ##
 ## ----------------------- ##
+
+## Install `BeEF-XSS`
+## https://beefproject.com
+## -----------------------
+function installbeefxss()
+{
+	gem install bundler
+	mkdir -p /opt/snoopgod/exploitation
+	git clone https://github.com/beefproject/beef /opt/snoopgod/exploitation/beef
+	cd /opt/snoopgod/exploitation/beef/
+	./install && cd /tmp/
+}
 
 ## Install `Burpsuite`
 ## https://portswigger.net/burp
@@ -550,7 +562,7 @@ function launch()
 	aptsources
 	removeunwanted
 	linuxkernel
-	systemupdate
+	systemsafe
 
 	# Install Libraries
 	installlibs
@@ -560,7 +572,7 @@ function launch()
 	installperl
 	install7zip
 	installfonts
-	systemupdate
+	systemsafe
 
 	# Install Native Packages
 	installcommons
@@ -579,6 +591,7 @@ function launch()
 	installwireless
 
 	# Install Extras Packages
+	installbeefxss
 	installburpsuite
 	installchrome
 	installmaltego
@@ -588,12 +601,12 @@ function launch()
 
 	# Build Custom Packages
 	buildpackages
-	systemupdate
+	systemsafe
 
 	# Setup System
 	systemconfig
 	systemkdebuild
-	systemupdate
+	systemsafe
 	systemclean
 
 	# Terminate

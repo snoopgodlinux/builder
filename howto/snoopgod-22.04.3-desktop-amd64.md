@@ -281,6 +281,14 @@ chmod +x deb.sh && ./deb.sh
 cd build && dpkg -i *.deb && cd /tmp/
 ```
 
+**Keep system safe**
+
+```shell
+apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
+apt-get -y remove && apt-get -y autoremove
+apt-get -y clean && apt-get -y autoclean
+```
+
 * * *
 
 #### SETUP SYSTEM
