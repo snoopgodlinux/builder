@@ -68,10 +68,7 @@ function workdir()
 ## ---------------------
 function aptsources()
 {
-	add-apt-repository -y main
-	add-apt-repository -y restricted
-	add-apt-repository -y universe
-	add-apt-repository -y multiverse
+	add-apt-repository -y main && add-apt-repository -y restricted && add-apt-repository -y universe && add-apt-repository -y multiverse
 }
 
 ## Keep system safe
@@ -326,8 +323,8 @@ function installmetasploit()
 ## --------------------------
 function installtorbrowser()
 {
-	wget -O "/tmp/tor-browser-linux-x86_64-13.0.9.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.9/tor-browser-linux-x86_64-13.0.9.tar.xz"
-	tar -xvf /tmp/tor-browser-linux-x86_64-13.0.9.tar.xz -C /etc/skel/
+	wget -O "/tmp/tor-browser-linux-x86_64-13.0.10.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.10/tor-browser-linux-x86_64-13.0.10.tar.xz"
+	tar -xvf /tmp/tor-browser-linux-x86_64-13.0.10.tar.xz -C /etc/skel/
 	mv /etc/skel/tor-browser /etc/skel/.torbrowser
 	rm -f /etc/skel/.torbrowser/start-tor-browser.desktop
 }
