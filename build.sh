@@ -263,6 +263,12 @@ chmod +x /usr/bin/screenfetch
 rm -f /etc/lsb-release
 cp /tmp/snoopgod/system/etc/lsb-release /etc/
 
+## Copy `os-release` configuration
+rm -f /etc/os-release
+rm -f /usr/lib/os-release
+cp /tmp/snoopgod/system/etc/os-release /etc/
+cp /tmp/snoopgod/system/usr/lib/os-release /usr/lib/
+
 ## Copy wallpapers
 rm -rf /usr/share/wallpapers/Next/
 cp -r /tmp/snoopgod/system/usr/share/wallpapers/* /usr/share/wallpapers/
