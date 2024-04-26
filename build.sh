@@ -8,9 +8,6 @@
 ## PREPARE ENVIRONMENT ##
 ## ------------------- ##
 
-## Reload daemon
-systemctl daemon-reload
-
 ## Move to `tmp` directory
 cd /tmp/
 
@@ -32,16 +29,9 @@ apt -y clean && apt -y autoclean
 sed -i "s/enabled=1/enabled=0/" /etc/default/apport
 
 ## Remove unwanted packages
-apt -y purge --auto-remove elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* neochat skanlite skanpage thunderbird transmission xterm
-
-## Remove `snap` application
-snap remove $(snap list | awk '!/^Name|^core/ {print $1}')
-
-## Remove `snap`
-apt -y purge --auto-remove snapd gnome-software-plugin-snap
-
-## Configure Linux generic kernel
-apt -y install linux-generic
+rm -rf /etc/libreoffice/registry
+apt -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* neochat plasma-welcome skanlite skanpage thunderbird transmission xterm
+rm -rf /etc/libreoffice/
 
 ## ----------------- ##
 ## INSTALL LIBRARIES ##
@@ -56,9 +46,6 @@ ln -s /usr/bin/python3 /usr/bin/python
 
 ## Install `java`
 apt -y install default-jre default-jdk
-
-## Install `Qt6`
-apt -y install qt6-base-dev qtcreator
 
 ## Install `Ruby`
 apt -y install ruby ruby-dev
@@ -77,7 +64,7 @@ apt -y install fonts-dejavu
 ## ----------------------- ##
 
 ## Install common packages
-apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap dirmngr dkms dos2unix dpkg-sig easytag fuse3 fwbuilder g++ gcc gconf2 ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains qemu rake rename reprepro rhythmbox screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli tree wireguard wget xorriso
+apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains rake rename reprepro rhythmbox screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli tree ubiquity ubiquity-slideshow-kubuntu wireguard wget xorriso
 
 ## Install cracking tools
 apt -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch fcrackzip gtkhash hashcat hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack patator princeprocessor sucrack
@@ -92,10 +79,10 @@ apt -y install aesfix aeskeyfind afflib-tools chntpw dc3dd dcfldd de4dot dislock
 apt -y install apktool arduino lynis
 
 ## Install information gathering tools
-apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer dnswalk exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 parsero recon-ng smbmap sntop sslsplit traceroute whois
+apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer dnswalk exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 parsero smbmap sntop sslsplit traceroute whois
 
 ## Install networking tools
-apt -y install arpwatch axel cntlm cryptcat darkstat dns2tcp dnstwist dsniff ethtool firewalk ifenslave inetsim miredo nbtscan netcat netdiscover netmask netsed onesixtyone pnscan proxytunnel
+apt -y install arpwatch axel cntlm darkstat dns2tcp dnstwist dsniff ethtool firewalk ifenslave inetsim miredo nbtscan netdiscover netmask netsed onesixtyone pnscan proxytunnel
 
 ## Install reverse engineering tools
 apt -y install edb-debugger valgrind yara
@@ -137,10 +124,6 @@ cd /opt/snoopgod/exploitation/beef/
 ./install && cd /tmp/
 
 ## Install `Burpsuite`
-wget -O "/tmp/jdk-17_linux-x64_bin.deb" "https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.deb"
-wget -O "/tmp/jdk-21_linux-x64_bin.deb" "https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb"
-dpkg -i /tmp/jdk-17_linux-x64_bin.deb && dpkg -i /tmp/jdk-21_linux-x64_bin.deb
-apt -y install openjdk-17-jdk openjdk-17-jre openjdk-21-jdk openjdk-21-jre
 wget -O "/tmp/burpsuite.sh" "https://portswigger-cdn.net/burp/releases/download?product=community&type=Linux"
 wget -O "/tmp/burpsuite.txt" "https://raw.githubusercontent.com/snoopgodlinux/system/main/tmp/burpsuite.txt"
 chmod +x /tmp/burpsuite.sh && cat "/tmp/burpsuite.txt" | /tmp/burpsuite.sh
@@ -156,8 +139,8 @@ cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
 apt -y update
 
 ## Install `TorBrowser`
-wget -O "/tmp/tor-browser-linux-x86_64-13.0.10.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.10/tor-browser-linux-x86_64-13.0.10.tar.xz"
-tar -xvf /tmp/tor-browser-linux-x86_64-13.0.10.tar.xz -C /etc/skel/
+wget -O "/tmp/tor-browser-linux-x86_64-13.0.14.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.14/tor-browser-linux-x86_64-13.0.14.tar.xz"
+tar -xvf /tmp/tor-browser-linux-x86_64-13.0.14.tar.xz -C /etc/skel/
 mv /etc/skel/tor-browser /etc/skel/.torbrowser
 rm -f /etc/skel/.torbrowser/start-tor-browser.desktop
 
@@ -196,7 +179,7 @@ mv /tmp/snoopgod/system-main/ /tmp/snoopgod/system/
 mkdir -p /etc/skel/.config
 
 ## Create Skeleton local folder
-mkdir -p /etc/skel/.local
+#mkdir -p /etc/skel/.local
 
 ## Setup user `bashrc`
 rm -f /etc/skel/.bashrc
@@ -210,7 +193,7 @@ cp /tmp/snoopgod/system/root/bashrc.txt /root/.bashrc
 cp -r /tmp/snoopgod/system/etc/skel/.config/* /etc/skel/.config/
 
 ## Copy local directory
-cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
+#cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
 
 ## Edit system conf
 sed -i "s/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=5s/" /etc/systemd/system.conf
@@ -286,6 +269,7 @@ rm -f /etc/proxychains.conf
 cp /tmp/snoopgod/system/etc/proxychains.conf /etc/
 rm -f /usr/bin/proxychains
 cp /tmp/snoopgod/system/usr/bin/proxychains /usr/bin/
+chmod +x /usr/bin/proxychains
 
 ## Remove launchers
 rm -rf /usr/share/applications/kde4
@@ -324,7 +308,7 @@ mv $HOME/.config/kdedefaults/* /etc/skel/.config/kdedefaults/
 mv $HOME/.config/kdeglobals /etc/skel/.config/
 mv $HOME/.config/plasmarc /etc/skel/.config/
 mv $HOME/.config/Trolltech.conf /etc/skel/.config/
-mv $HOME/.kde/ /etc/skel/
+#mv $HOME/.kde/ /etc/skel/
 
 ## dolphinrc
 kwriteconfig5 --file /etc/skel/.config/dolphinrc --group "PlacesPanel" --key "IconSize" "32"
