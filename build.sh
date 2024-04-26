@@ -1,12 +1,15 @@
 #!/bin/bash
 #
-# [Release]: SnoopGod 22.04.4 LTS amd64
-# [Website]: https://snoopgod.com/releases/?ver=22.04.4
+# [Release]: SnoopGod 24.04.1 LTS amd64
+# [Website]: https://snoopgod.com/releases/?ver=24.04.1
 # [License]: http://www.gnu.org/licenses/gpl-3.0.html
 
 ## ------------------- ##
 ## PREPARE ENVIRONMENT ##
 ## ------------------- ##
+
+## Reload daemon
+systemctl reload-daemon
 
 ## Move to `tmp` directory
 cd /tmp/
@@ -21,97 +24,100 @@ mkdir -p /tmp/snoopgod/
 add-apt-repository -y main && add-apt-repository -y restricted && add-apt-repository -y universe && add-apt-repository -y multiverse
 
 ## Keep system safe
-apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
-apt-get -y remove && apt-get -y autoremove
-apt-get -y clean && apt-get -y autoclean
+apt -y update && apt -y upgrade && apt -y dist-upgrade
+apt -y remove && apt -y autoremove
+apt -y clean && apt -y autoclean
 
 ## Disable error reporting
 sed -i "s/enabled=1/enabled=0/" /etc/default/apport
 
 ## Remove unwanted packages
-apt-get -y purge --auto-remove elisa gstreamer1.0-vaapi kcalc kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* muon skanlite thunderbird transmission xterm
+apt -y purge --auto-remove elisa fcitx5 gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* neochat skanlite skanpage thunderbird transmission xterm
 
 ## Configure Linux generic kernel
-apt-get -y install linux-generic
+apt -y install linux-generic
 
 ## ----------------- ##
 ## INSTALL LIBRARIES ##
 ## ----------------- ##
 
 ## Install system libraries
-apt-get -y install libbz2-dev libc6-x32 libcurl4-openssl-dev libffi-dev libfmt-dev libfuse2 libgdbm-dev libglib2.0-dev libglib2.0-dev-bin libgmp-dev libgspell-1-dev libgtkmm-3.0-dev libgtksourceviewmm-3.0-dev libncurses5-dev libnotify-bin libnss3-dev libreadline-dev libsodium-dev libspdlog-dev libsqlite3-dev libssl-dev libtool libuchardet-dev libxml2 libxml++2.6-dev libxml2-dev libxslt1-dev zlib1g-dev
+apt -y install libbz2-dev libc6-x32 libcurl4-openssl-dev libffi-dev libfmt-dev libfuse2 libgdbm-dev libglib2.0-dev libglib2.0-dev-bin libgmp-dev libgspell-1-dev libgtkmm-3.0-dev libgtksourceviewmm-3.0-dev libhwloc-dev libncurses5-dev libnotify-bin libnss3-dev libreadline-dev libsodium-dev libspdlog-dev libsqlite3-dev libssl-dev libtool libuchardet-dev libuv1-dev libxml++2.6-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
 
 ## Install `Python`
-apt-get -y install python3-flask python3-future python3-geoip python3-httplib2 python3-nmap python3-numpy python3-paramiko python3-pip python3-psutil python3-pycurl python3-pyqt5 python3-requests python3-scapy python3-scipy python3-setuptools python3-urllib3 python3-virtualenv python3-wheel
+apt -y install python3-flask python3-future python3-geoip python3-httplib2 python3-nmap python3-numpy python3-paramiko python3-pip python3-psutil python3-pycurl python3-pyqt5 python3-requests python3-scapy python3-scipy python3-setuptools python3-urllib3 python3-virtualenv python3-wheel
 ln -s /usr/bin/python3 /usr/bin/python
 
+## Install `java`
+apt -y install default-jre default-jdk
+
 ## Install `Qt6`
-apt-get -y install qt6-base-dev qtcreator
+apt -y install qt6-base-dev qtcreator
 
 ## Install `Ruby`
-apt-get -y install ruby ruby-dev
+apt -y install ruby ruby-dev
 
 ## Install `Perl`
-apt-get -y install perl perl-tk
+apt -y install perl perl-tk
 
 ## Install `7zip`
-apt-get -y install file-roller p7zip p7zip-full p7zip-rar
+apt -y install file-roller p7zip p7zip-full p7zip-rar
 
 ## Install `Fonts`
-apt-get -y install fonts-dejavu
+apt -y install fonts-dejavu
 
 ## ----------------------- ##
 ## INSTALL NATIVE PACKAGES ##
 ## ----------------------- ##
 
 ## Install common packages
-apt-get -y install abootimg android-sdk apache2 apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap default-jdk default-jre dirmngr dkms dos2unix dpkg-sig easytag fuse3 fwbuilder g++ gcc gconf2 ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains qemu rake rename reprepro rhythmbox screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli tree wireguard wget xorriso
+apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap dirmngr dkms dos2unix dpkg-sig easytag fuse3 fwbuilder g++ gcc gconf2 ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains qemu rake rename reprepro rhythmbox screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli tree wireguard wget xorriso
 
 ## Install cracking tools
-apt-get -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch fcrackzip gtkhash hashcat hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack patator princeprocessor sucrack
+apt -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch fcrackzip gtkhash hashcat hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack patator princeprocessor sucrack
 
 ## Install exploitation tools
-apt-get -y install websploit yersinia weevely
+apt -y install websploit yersinia weevely
 
 ## Install forensics tools
-apt-get -y install aesfix aeskeyfind afflib-tools chntpw dc3dd dcfldd de4dot dislocker ext3grep ext4magic extundelete fatcat flashrom foremost galleta guymager mac-robber magicrescue myrescue openocd o-saft outguess p0f parted pasco pdfcrack xmount
+apt -y install aesfix aeskeyfind afflib-tools chntpw dc3dd dcfldd de4dot dislocker ext3grep ext4magic extundelete fatcat flashrom foremost galleta guymager mac-robber magicrescue myrescue openocd o-saft outguess p0f parted pasco pdfcrack xmount
 
 ## Install hardening tools
-apt-get -y install apktool arduino lynis
+apt -y install apktool arduino lynis
 
 ## Install information gathering tools
-apt-get -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer dnswalk exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 parsero recon-ng smbmap sntop sslsplit traceroute whois
+apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer dnswalk exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 parsero recon-ng smbmap sntop sslsplit traceroute whois
 
 ## Install networking tools
-apt-get -y install arpwatch axel cntlm cryptcat darkstat dns2tcp dnstwist dsniff ethtool firewalk ifenslave inetsim miredo nbtscan netcat netdiscover netmask netsed onesixtyone pnscan proxytunnel
+apt -y install arpwatch axel cntlm cryptcat darkstat dns2tcp dnstwist dsniff ethtool firewalk ifenslave inetsim miredo nbtscan netcat netdiscover netmask netsed onesixtyone pnscan proxytunnel
 
 ## Install reverse engineering tools
-apt-get -y install edb-debugger valgrind yara
+apt -y install edb-debugger valgrind yara
 
 ## Install scripts and utilities
-apt-get -y install polenum
+apt -y install polenum
 
 ## Install sniffing & spoofing tools
-apt-get -y install bettercap chaosreader ettercap-common ettercap-graphical wireshark
+apt -y install bettercap chaosreader ettercap-common ettercap-graphical wireshark
 chmod +x /usr/bin/dumpcap
 
 ## Install stress testing tools
-apt-get -y install arping dhcpig fping goldeneye hping3 slowhttptest t50 termineter
+apt -y install arping dhcpig fping goldeneye hping3 slowhttptest t50 termineter
 
 ## Install vulnerability analysis tools
-apt-get -y install afl++ dirsearch doona pocsuite3 pompem sqlmap wapiti
+apt -y install afl++ dirsearch doona pocsuite3 pompem sqlmap wapiti
 
 ## Install web applications tools
-apt-get -y install dirb ffuf gobuster wfuzz wafw00f whatweb wig
+apt -y install dirb ffuf gobuster wfuzz wafw00f whatweb wig
 gem install wpscan
 
 ## Install wireless tools
-apt-get -y install aircrack-ng bully cowpatty iw mdk3 mdk4 mfcuk mfoc multimon-ng pixiewps reaver wifite
+apt -y install aircrack-ng bully cowpatty iw mdk3 mdk4 mfcuk mfoc multimon-ng pixiewps reaver wifite
 
 ## Keep system safe
-apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
-apt-get -y remove && apt-get -y autoremove
-apt-get -y clean && apt-get -y autoclean
+apt -y update && apt -y upgrade && apt -y dist-upgrade
+apt -y remove && apt -y autoremove
+apt -y clean && apt -y autoclean
 
 ## ----------------------- ##
 ## INSTALL EXTRAS PACKAGES ##
@@ -128,14 +134,10 @@ cd /opt/snoopgod/exploitation/beef/
 wget -O "/tmp/jdk-17_linux-x64_bin.deb" "https://download.oracle.com/java/17/latest/jdk-17_linux-x64_bin.deb"
 wget -O "/tmp/jdk-21_linux-x64_bin.deb" "https://download.oracle.com/java/21/latest/jdk-21_linux-x64_bin.deb"
 dpkg -i /tmp/jdk-17_linux-x64_bin.deb && dpkg -i /tmp/jdk-21_linux-x64_bin.deb
-apt-get -y install openjdk-17-jdk openjdk-17-jre openjdk-21-jdk openjdk-21-jre
+apt -y install openjdk-17-jdk openjdk-17-jre openjdk-21-jdk openjdk-21-jre
 wget -O "/tmp/burpsuite.sh" "https://portswigger-cdn.net/burp/releases/download?product=community&type=Linux"
 wget -O "/tmp/burpsuite.txt" "https://raw.githubusercontent.com/snoopgodlinux/system/main/tmp/burpsuite.txt"
 chmod +x /tmp/burpsuite.sh && cat "/tmp/burpsuite.txt" | /tmp/burpsuite.sh
-
-## Install `Chrome`
-wget -O "/tmp/google-chrome.deb" "https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb"
-dpkg -i /tmp/google-chrome.deb
 
 ## Install `Maltego`
 wget -O "/tmp/Maltego.v4.6.0.deb" "https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.6.0.deb"
@@ -145,7 +147,7 @@ dpkg -i /tmp/Maltego.v4.6.0.deb
 wget -O "/tmp/msfinstall" "https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb"
 chmod +x /tmp/msfinstall && /tmp/msfinstall
 cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
-apt-get -y update
+apt -y update
 
 ## Install `TorBrowser`
 wget -O "/tmp/tor-browser-linux-x86_64-13.0.10.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.10/tor-browser-linux-x86_64-13.0.10.tar.xz"
@@ -171,9 +173,9 @@ chmod +x deb.sh && ./deb.sh
 cd build && dpkg -i *.deb && cd /tmp/
 
 ## Keep system safe
-apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade
-apt-get -y remove && apt-get -y autoremove
-apt-get -y clean && apt-get -y autoclean
+apt -y update && apt -y upgrade && apt -y dist-upgrade
+apt -y remove && apt -y autoremove
+apt -y clean && apt -y autoclean
 
 ## ------------- ##
 ## CONFIG SYSTEM ##
@@ -320,15 +322,6 @@ mv $HOME/.kde/ /etc/skel/
 
 ## dolphinrc
 kwriteconfig5 --file /etc/skel/.config/dolphinrc --group "PlacesPanel" --key "IconSize" "32"
-
-## konsolerc
-kwriteconfig5 --file /etc/skel/.config/konsolerc --group "MainWindow" --key "MenuBar" "Disabled"
-
-## kwinrc
-kwriteconfig5 --file /etc/skel/.config/kwinrc --group "Windows" --key "BorderlessMaximizedWindows" "true"
-
-## kwalletrc
-kwriteconfig5 --file /etc/skel/.config/kwalletrc --group "Wallet" --key "Enabled" "false"
 
 ## --------------- ##
 ## CLEAN-UP SYSTEM ##
