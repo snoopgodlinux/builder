@@ -9,7 +9,7 @@
 ## ------------------- ##
 
 ## Reload daemon
-systemctl reload-daemon
+systemctl daemon-reload
 
 ## Move to `tmp` directory
 cd /tmp/
@@ -32,7 +32,13 @@ apt -y clean && apt -y autoclean
 sed -i "s/enabled=1/enabled=0/" /etc/default/apport
 
 ## Remove unwanted packages
-apt -y purge --auto-remove elisa fcitx5 gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* neochat skanlite skanpage thunderbird transmission xterm
+apt -y purge --auto-remove elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* neochat skanlite skanpage thunderbird transmission xterm
+
+## Remove `snap` application
+snap remove $(snap list | awk '!/^Name|^core/ {print $1}')
+
+## Remove `snap`
+apt -y purge --auto-remove snapd gnome-software-plugin-snap
 
 ## Configure Linux generic kernel
 apt -y install linux-generic
