@@ -221,8 +221,12 @@ rm -rf /usr/lib/ubiquity/
 cp -r /tmp/snoopgod/system/usr/lib/ubiquity/ /usr/lib/
 rm -rf /usr/share/ubiquity/qt/images/
 cp -r /tmp/snoopgod/system/usr/share/ubiquity/qt/images /usr/share/ubiquity/qt/
+rm -f /usr/share/ubiquity/qt/app.ui
+cp /tmp/snoopgod/system/usr/share/ubiquity/qt/app.ui /usr/share/ubiquity/qt/
 rm -f /usr/share/ubiquity/qt/breadcrumb_current.qss
 cp /tmp/snoopgod/system/usr/share/ubiquity/qt/breadcrumb_current.qss /usr/share/ubiquity/qt/
+rm -f /usr/share/ubiquity/qt/stepPartAuto.ui
+cp /tmp/snoopgod/system/usr/share/ubiquity/qt/stepPartAuto.ui /usr/share/ubiquity/qt/
 rm -f /usr/share/ubiquity/qt/style.qss
 cp /tmp/snoopgod/system/usr/share/ubiquity/qt/style.qss /usr/share/ubiquity/qt/
 
