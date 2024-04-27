@@ -230,6 +230,7 @@ rm -f /usr/share/plymouth/ubuntu-logo.png
 cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
 rm -rf /usr/share/plymouth/themes/spinner/
 cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
+nano /etc/alternatives/text.plymouth
 update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 200
 update-alternatives --auto default.plymouth 
 update-initramfs -u -k all
@@ -306,7 +307,7 @@ rm -f /usr/share/applications/ophcrack.desktop
 rm -f /usr/share/applications/org.kde.plasma.emojier.desktop
 rm -f /usr/share/applications/org.wireshark.Wireshark.desktop
 rm -f /usr/share/applications/texdoctk.desktop
-rm -f /usr/share/applications/ubiquity.desktop
+rm -f /usr/share/applications/ubiquity-kdeui.desktop
 rm -f /usr/share/applications/*-BurpSuiteCommunity.desktop
 rm -f /usr/share/applications/*-zap.sh.desktop
 
