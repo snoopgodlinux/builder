@@ -227,6 +227,9 @@ chmod +x /usr/share/snoopgod/usr/bin/ucleaner
 chmod +x /usr/share/snoopgod/usr/bin/rcleaner
 
 ## Configure `plymouth`
+sed -i "s/kubuntu-logo/snoopgod-logo/" /etc/alternatives/text.plymouth
+sed -i "s/Kubuntu Text/SnoopGod Text/" /etc/alternatives/text.plymouth
+sed -i "s/Kubuntu 24.04/SnoopGod 24.04/" /etc/alternatives/text.plymouth
 rm -f /usr/share/plymouth/ubuntu-logo.png
 cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
 rm -rf /usr/share/plymouth/themes/spinner/
@@ -325,7 +328,6 @@ plasma-apply-colorscheme --accent-color gainsboro >/dev/null 2>&1
 plasma-apply-lookandfeel -a org.kde.breezedark.desktop >/dev/null 2>&1
 
 ## Move KDE configuration files to Skeleton folder
-mkdir /etc/skel/.config/kdedefaults/
 mv $HOME/.config/gtkrc /etc/skel/.config/
 mv $HOME/.config/gtkrc-2.0 /etc/skel/.config/
 mv $HOME/.config/kdedefaults/* /etc/skel/.config/kdedefaults/
@@ -353,4 +355,4 @@ rm -rf /tmp/*
 ## Clean `bash` history
 rm -f ~/.bash_history
 rm -f /root/.bash_history
- history -c && history -w
+history -c && history -w
