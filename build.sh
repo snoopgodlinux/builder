@@ -33,6 +33,9 @@ rm -rf /etc/libreoffice/registry
 apt -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* neochat plasma-welcome skanlite skanpage thunderbird transmission xterm
 rm -rf /etc/libreoffice/
 
+## Install Generic Kernel
+apt-get -y install linux-generic
+
 ## ----------------- ##
 ## INSTALL LIBRARIES ##
 ## ----------------- ##
@@ -141,8 +144,6 @@ dpkg -i /tmp/Maltego.v4.6.0.deb
 ## Install `Metasploit`
 wget -O "/tmp/msfinstall" "https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb"
 chmod +x /tmp/msfinstall && /tmp/msfinstall
-cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
-apt -y update
 
 ## Install `ProtonVPN`
 wget -O "/tmp/protonvpn-stable-release_1.0.3-3_all.deb" "https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb"
@@ -195,7 +196,7 @@ mv /tmp/snoopgod/system-main/ /tmp/snoopgod/system/
 mkdir -p /etc/skel/.config
 
 ## Create Skeleton local folder
-#mkdir -p /etc/skel/.local
+mkdir -p /etc/skel/.local
 
 ## Setup user `bashrc`
 rm -f /etc/skel/.bashrc
@@ -209,7 +210,7 @@ cp /tmp/snoopgod/system/root/bashrc.txt /root/.bashrc
 cp -r /tmp/snoopgod/system/etc/skel/.config/* /etc/skel/.config/
 
 ## Copy local directory
-#cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
+cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
 
 ## Edit system conf
 sed -i "s/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=5s/" /etc/systemd/system.conf
@@ -230,7 +231,8 @@ cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
 rm -rf /usr/share/plymouth/themes/spinner/
 cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
 update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 200
-update-initramfs -u -k all
+update-alternatives --auto default.plymouth 
+update-initramfs -u
 
 ## Copy `ubiquity`
 rm -rf /usr/lib/ubiquity/
@@ -328,7 +330,6 @@ mv $HOME/.config/kdedefaults/* /etc/skel/.config/kdedefaults/
 mv $HOME/.config/kdeglobals /etc/skel/.config/
 mv $HOME/.config/plasmarc /etc/skel/.config/
 mv $HOME/.config/Trolltech.conf /etc/skel/.config/
-#mv $HOME/.kde/ /etc/skel/
 
 ## dolphinrc
 kwriteconfig5 --file /etc/skel/.config/dolphinrc --group "PlacesPanel" --key "IconSize" "32"
