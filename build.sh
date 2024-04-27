@@ -231,7 +231,6 @@ rm -f /usr/share/plymouth/ubuntu-logo.png
 cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
 rm -rf /usr/share/plymouth/themes/spinner/
 cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
-nano /etc/alternatives/text.plymouth
 update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 200
 update-alternatives --auto default.plymouth 
 update-initramfs -u -k all
