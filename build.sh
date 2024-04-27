@@ -67,7 +67,7 @@ apt -y install fonts-dejavu
 ## ----------------------- ##
 
 ## Install common packages
-apt -y install abootimg install android-sdk install apt-transport-https install apt-utils install atftp install autoconf install autopsy install baobab install binutils install binwalk install build-essential install cabextract install cherrytree install chirp install cmake install curl install cutycapt install debootstrap install dirmngr install dkms install dos2unix install easytag install fuse3 install fwbuilder install g++ install gcc install ghex install git install gnome-disk-utility install gpg install gqrx-sdr install gss-ntlmssp install hackrf install hexedit install htop install httrack install inspectrum install jq install kate install kde-spectacle install keepassxc install locate install macchanger install make install mtools install natpmpc install net-tools install ninja-build install openvpn install pkg-config install proxychains install rake install rename install reprepro install rhythmbox install screen install screenfetch install secure-delete install simplescreenrecorder install sqlitebrowser install socat install software-properties-common install software-properties-gtk install squashfs-tools install synaptic install swaks install terminator install tor install torsocks install trash-cli install tree install ubiquity install ubiquity-slideshow-kubuntu install wireguard install wget install xorriso
+apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg gqrx-sdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains rake rename reprepro rhythmbox screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli tree ubiquity ubiquity-slideshow-kubuntu wireguard wget xorriso
 
 ## Install cracking tools
 apt -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch fcrackzip gtkhash hashcat hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack patator princeprocessor sucrack
@@ -324,6 +324,7 @@ plasma-apply-colorscheme --accent-color gainsboro >/dev/null 2>&1
 plasma-apply-lookandfeel -a org.kde.breezedark.desktop >/dev/null 2>&1
 
 ## Move KDE configuration files to Skeleton folder
+mkdir /etc/skel/.config/kdedefaults/
 mv $HOME/.config/gtkrc /etc/skel/.config/
 mv $HOME/.config/gtkrc-2.0 /etc/skel/.config/
 mv $HOME/.config/kdedefaults/* /etc/skel/.config/kdedefaults/
@@ -338,11 +339,17 @@ kwriteconfig5 --file /etc/skel/.config/dolphinrc --group "PlacesPanel" --key "Ic
 ## CLEAN-UP SYSTEM ##
 ## --------------- ##
 
+## Clean `root` directory
+rm -rf /root/.cache
+rm -rf /root/.config
+rm -rf /root/.local
+rm -rf /root/.ssh
+rm -rf /root/.wget-hsts
+
 ## Clean `tmp` directory
 rm -rf /tmp/*
 
 ## Clean `bash` history
 rm -f ~/.bash_history
 rm -f /root/.bash_history
-rm -f /root/.wget-hsts
-history -c && history -w
+ history -c && history -w
