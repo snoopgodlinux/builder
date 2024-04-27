@@ -34,9 +34,6 @@ apt -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kca
 ktorrent ksudoku kwalletmanager libreoffice* neochat plasma-welcome skanlite skanpage thunderbird transmission xterm
 rm -rf /etc/libreoffice/
 
-## Install Generic Kernel
-#apt -y install linux-headers-6.8.0-31 linux-headers-6.8.0-31-lowlatency linux-image-6.8.0-31-lowlatency
-
 ## ----------------- ##
 ## INSTALL LIBRARIES ##
 ## ----------------- ##
