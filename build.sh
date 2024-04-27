@@ -312,6 +312,9 @@ rm -f /usr/share/applications/ubiquity-kdeui.desktop
 rm -f /usr/share/applications/*-BurpSuiteCommunity.desktop
 rm -f /usr/share/applications/*-zap.sh.desktop
 
+## Backup Grub
+cp /etc/default/grub /usr/share/grub/default/grub
+
 ## ----------------- ##
 ## CONFIG KDE PLASMA ##
 ## ----------------- ##
