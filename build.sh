@@ -128,6 +128,12 @@ wget -O "/tmp/burpsuite.sh" "https://portswigger-cdn.net/burp/releases/download?
 wget -O "/tmp/burpsuite.txt" "https://raw.githubusercontent.com/snoopgodlinux/system/main/tmp/burpsuite.txt"
 chmod +x /tmp/burpsuite.sh && cat "/tmp/burpsuite.txt" | /tmp/burpsuite.sh
 
+## Install `Jetbrains`
+mkdir -p /etc/skel/.local/JetBrains/Toolbox/
+wget -O "/tmp/jetbrains-toolbox-2.3.0.30876.tar.gz" "https://download-cdn.jetbrains.com/toolbox/jetbrains-toolbox-2.3.0.30876.tar.gz"
+tar -xvf /tmp/jetbrains-toolbox-2.3.0.30876.tar.gz -C /etc/skel/.local/JetBrains/Toolbox/
+mv /etc/skel/.local/JetBrains/Toolbox/jetbrains-toolbox-2.3.0.30876 /etc/skel/.local/JetBrains/Toolbox/bin
+
 ## Install `Maltego`
 wget -O "/tmp/Maltego.v4.6.0.deb" "https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.6.0.deb"
 dpkg -i /tmp/Maltego.v4.6.0.deb
@@ -142,6 +148,11 @@ apt -y update
 wget -O "/tmp/protonvpn-stable-release_1.0.3-3_all.deb" "https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb"
 sudo dpkg -i /tmp/protonvpn-stable-release_1.0.3-3_all.deb
 apt -y update && apt -y install proton-vpn-gnome-desktop
+
+## Install `Telegram`
+wget -O "/tmp/tsetup.4.16.8.tar.xz" "https://td.telegram.org/tlinux/tsetup.4.16.8.tar.xz"
+tar -xvf /tmp/tsetup.4.16.8.tar.xz -C /etc/skel/
+mv /etc/skel/Telegram /etc/skel/.telegram
 
 ## Install `TorBrowser`
 wget -O "/tmp/tor-browser-linux-x86_64-13.0.14.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.14/tor-browser-linux-x86_64-13.0.14.tar.xz"
