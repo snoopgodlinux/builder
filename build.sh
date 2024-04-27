@@ -124,7 +124,8 @@ gem install bundler
 mkdir -p /opt/snoopgod/exploitation
 git clone https://github.com/beefproject/beef /opt/snoopgod/exploitation/beef
 cd /opt/snoopgod/exploitation/beef/
-./install && cd /tmp/
+rm -f install && mv /tmp/beefproject.txt /opt/snoopgod/exploitation/beef/install
+chmod +x install && ./install && cd /tmp/
 
 ## Install `Burpsuite`
 wget -O "/tmp/burpsuite.sh" "https://portswigger-cdn.net/burp/releases/download?product=community&type=Linux"
