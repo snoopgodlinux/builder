@@ -138,6 +138,11 @@ chmod +x /tmp/msfinstall && /tmp/msfinstall
 cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
 apt -y update
 
+## Install `ProtonVPN`
+wget -O "/tmp/protonvpn-stable-release_1.0.3-3_all.deb" "https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb"
+sudo dpkg -i /tmp/protonvpn-stable-release_1.0.3-3_all.deb
+apt -y update && apt -y install proton-vpn-gnome-desktop
+
 ## Install `TorBrowser`
 wget -O "/tmp/tor-browser-linux-x86_64-13.0.14.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.14/tor-browser-linux-x86_64-13.0.14.tar.xz"
 tar -xvf /tmp/tor-browser-linux-x86_64-13.0.14.tar.xz -C /etc/skel/
