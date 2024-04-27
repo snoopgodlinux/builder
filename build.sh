@@ -34,7 +34,7 @@ apt -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kca
 rm -rf /etc/libreoffice/
 
 ## Install Generic Kernel
-apt-get -y install linux-generic
+apt -y install linux-headers-6.8.0-31 linux-headers-6.8.0-31-lowlatency linux-image-6.8.0-31-lowlatency
 
 ## ----------------- ##
 ## INSTALL LIBRARIES ##
@@ -67,7 +67,7 @@ apt -y install fonts-dejavu
 ## ----------------------- ##
 
 ## Install common packages
-apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree chirp cmake curl cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gnuradio gpg gqrx-sdr gr-air-modes gr-iqbal gr-osmosdr gss-ntlmssp hackrf hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains rake rename reprepro rhythmbox screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli tree ubiquity ubiquity-slideshow-kubuntu wireguard wget xorriso
+apt -y install abootimg install android-sdk install apt-transport-https install apt-utils install atftp install autoconf install autopsy install baobab install binutils install binwalk install build-essential install cabextract install cherrytree install chirp install cmake install curl install cutycapt install debootstrap install dirmngr install dkms install dos2unix install easytag install fuse3 install fwbuilder install g++ install gcc install ghex install git install gnome-disk-utility install gpg install gqrx-sdr install gss-ntlmssp install hackrf install hexedit install htop install httrack install inspectrum install jq install kate install kde-spectacle install keepassxc install locate install macchanger install make install mtools install natpmpc install net-tools install ninja-build install openvpn install pkg-config install proxychains install rake install rename install reprepro install rhythmbox install screen install screenfetch install secure-delete install simplescreenrecorder install sqlitebrowser install socat install software-properties-common install software-properties-gtk install squashfs-tools install synaptic install swaks install terminator install tor install torsocks install trash-cli install tree install ubiquity install ubiquity-slideshow-kubuntu install wireguard install wget install xorriso
 
 ## Install cracking tools
 apt -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch fcrackzip gtkhash hashcat hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack patator princeprocessor sucrack
@@ -232,7 +232,7 @@ rm -rf /usr/share/plymouth/themes/spinner/
 cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
 update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 200
 update-alternatives --auto default.plymouth 
-update-initramfs -u
+update-initramfs -u -k all
 
 ## Copy `ubiquity`
 rm -rf /usr/lib/ubiquity/
