@@ -30,7 +30,8 @@ sed -i "s/enabled=1/enabled=0/" /etc/default/apport
 
 ## Remove unwanted packages
 rm -rf /etc/libreoffice/registry
-apt -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc ktorrent ksudoku kwalletmanager libreoffice* neochat plasma-welcome skanlite skanpage thunderbird transmission xterm
+apt -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc \
+ktorrent ksudoku kwalletmanager libreoffice* neochat plasma-welcome skanlite skanpage thunderbird transmission xterm
 rm -rf /etc/libreoffice/
 
 ## Install Generic Kernel
@@ -41,10 +42,13 @@ apt -y install linux-headers-6.8.0-31 linux-headers-6.8.0-31-lowlatency linux-im
 ## ----------------- ##
 
 ## Install system libraries
-apt -y install libbz2-dev libc6-x32 libcurl4-openssl-dev libffi-dev libfmt-dev libfuse2 libgdbm-dev libglib2.0-dev libglib2.0-dev-bin libgmp-dev libgspell-1-dev libgtkmm-3.0-dev libgtksourceviewmm-3.0-dev libhwloc-dev libncurses5-dev libnotify-bin libnss3-dev libreadline-dev libsodium-dev libspdlog-dev libsqlite3-dev libssl-dev libtool libuchardet-dev libuv1-dev libxml++2.6-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
+apt -y install libbz2-dev libc6-x32 libcurl4-openssl-dev libffi-dev libfmt-dev libfuse2 libgdbm-dev libglib2.0-dev libglib2.0-dev-bin libgmp-dev \
+libgspell-1-dev libgtkmm-3.0-dev libgtksourceviewmm-3.0-dev libhwloc-dev libncurses5-dev libnotify-bin libnss3-dev libreadline-dev libsodium-dev \
+libspdlog-dev libsqlite3-dev libssl-dev libtool libuchardet-dev libuv1-dev libxml++2.6-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
 
 ## Install `Python`
-apt -y install python3-flask python3-future python3-geoip python3-httplib2 python3-nmap python3-numpy python3-paramiko python3-pip python3-psutil python3-pycurl python3-pyqt5 python3-requests python3-scapy python3-scipy python3-setuptools python3-urllib3 python3-virtualenv python3-wheel
+apt -y install python3-flask python3-future python3-geoip python3-httplib2 python3-nmap python3-numpy python3-paramiko python3-pip python3-psutil \
+python3-pycurl python3-pyqt5 python3-requests python3-scapy python3-scipy python3-setuptools python3-urllib3 python3-virtualenv python3-wheel
 ln -s /usr/bin/python3 /usr/bin/python
 
 ## Install `java`
@@ -67,25 +71,33 @@ apt -y install fonts-dejavu
 ## ----------------------- ##
 
 ## Install common packages
-apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree cmake curl cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop httrack inspectrum jq kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains rake rename reprepro rhythmbox screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli tree ubiquity ubiquity-slideshow-kubuntu wireguard wget xorriso
+apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree \
+cmake curl cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop httrack inspectrum jq \
+kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains rake rename reprepro rhythmbox \
+screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic \
+swaks terminator tor torsocks trash-cli tree ubiquity ubiquity-slideshow-kubuntu wireguard wget xorriso
 
 ## Install cracking tools
-apt -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch fcrackzip gtkhash hashcat hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack patator princeprocessor sucrack
+apt -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch fcrackzip gtkhash hashcat \
+hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack patator princeprocessor sucrack
 
 ## Install exploitation tools
 apt -y install websploit yersinia weevely
 
 ## Install forensics tools
-apt -y install aesfix aeskeyfind afflib-tools chntpw dc3dd dcfldd de4dot dislocker ext3grep ext4magic extundelete fatcat flashrom foremost galleta guymager mac-robber magicrescue myrescue openocd o-saft outguess p0f parted pasco pdfcrack xmount
+apt -y install aesfix aeskeyfind afflib-tools chntpw dc3dd dcfldd de4dot dislocker ext3grep ext4magic extundelete fatcat flashrom foremost galleta guymager \
+mac-robber magicrescue myrescue openocd o-saft outguess p0f parted pasco pdfcrack xmount
 
 ## Install hardening tools
 apt -y install apktool arduino lynis
 
 ## Install information gathering tools
-apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer dnswalk exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 parsero smbmap sntop sslsplit traceroute whois
+apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer dnswalk exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 \
+parsero smbmap sntop sslsplit traceroute whois
 
 ## Install networking tools
-apt -y install arpwatch axel cntlm darkstat dns2tcp dnstwist dsniff ethtool firewalk ifenslave inetsim miredo nbtscan netdiscover netmask netsed onesixtyone pnscan proxytunnel
+apt -y install arpwatch axel cntlm darkstat dns2tcp dnstwist dsniff ethtool firewalk ifenslave inetsim miredo nbtscan netdiscover netmask netsed onesixtyone \
+pnscan proxytunnel
 
 ## Install reverse engineering tools
 apt -y install edb-debugger valgrind yara
