@@ -123,9 +123,9 @@ apt -y clean && apt -y autoclean
 gem install bundler
 mkdir -p /opt/snoopgod/exploitation
 git clone https://github.com/beefproject/beef /opt/snoopgod/exploitation/beef
-cd /opt/snoopgod/exploitation/beef/
-rm -f install && mv /tmp/beefproject.txt /opt/snoopgod/exploitation/beef/install
-chmod +x install && ./install && cd /tmp/
+cd /opt/snoopgod/exploitation/beef/ && rm -f install 
+wget -O "/opt/snoopgod/exploitation/beef/beefproject.txt" "https://raw.githubusercontent.com/snoopgodlinux/system/main/tmp/beefproject.txt"
+mv beefproject.txt install && chmod +x install && ./install && cd /tmp/
 
 ## Install `Burpsuite`
 wget -O "/tmp/burpsuite.sh" "https://portswigger-cdn.net/burp/releases/download?product=community&type=Linux"
