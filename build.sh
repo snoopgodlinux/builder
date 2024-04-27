@@ -35,7 +35,7 @@ ktorrent ksudoku kwalletmanager libreoffice* neochat plasma-welcome skanlite ska
 rm -rf /etc/libreoffice/
 
 ## Install Generic Kernel
-apt -y install linux-headers-6.8.0-31 linux-headers-6.8.0-31-lowlatency linux-image-6.8.0-31-lowlatency
+#apt -y install linux-headers-6.8.0-31 linux-headers-6.8.0-31-lowlatency linux-image-6.8.0-31-lowlatency
 
 ## ----------------- ##
 ## INSTALL LIBRARIES ##
@@ -212,7 +212,7 @@ cp /tmp/snoopgod/system/root/bashrc.txt /root/.bashrc
 cp -r /tmp/snoopgod/system/etc/skel/.config/* /etc/skel/.config/
 
 ## Copy local directory
-cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
+#cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
 
 ## Edit system conf
 sed -i "s/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=5s/" /etc/systemd/system.conf
