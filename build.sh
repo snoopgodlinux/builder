@@ -68,7 +68,7 @@ function disableapport()
 function removeunwanted()
 {
 	rm -rf /etc/libreoffice/registry
-	apt -y purge --auto-remove elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc \
+	apt -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc \
 	ktorrent ksudoku kwalletmanager libreoffice* neochat plasma-welcome skanlite skanpage thunderbird transmission xterm
 	rm -rf /etc/libreoffice/
 }
@@ -149,7 +149,8 @@ function installcommons()
 	cmake curl cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop httrack inspectrum jq \
 	kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains rake rename reprepro rhythmbox \
 	screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic \
-	swaks terminator tor torsocks trash-cli tree wireguard wget xorriso
+	swaks terminator tor torsocks trash-cli tree ubiquity ubiquity-casper ubiquity-frontend-kde ubiquity-slideshow-kubuntu ubiquity-ubuntu-artwork \
+	wireguard wget xorriso
 }
 
 ## Install cracking tools
@@ -380,6 +381,28 @@ function configdesktop()
 	chmod +x /usr/share/snoopgod/usr/bin/ucleaner
 	chmod +x /usr/share/snoopgod/usr/bin/rcleaner
 
+	## Configure `plymouth`
+	rm -f /usr/share/plymouth/ubuntu-logo.png
+	cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
+	rm -rf /usr/share/plymouth/themes/spinner/
+	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
+	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 180
+	update-initramfs -u -k all
+
+	## Copy `ubiquity`
+	rm -rf /usr/lib/ubiquity/
+	cp -r /tmp/snoopgod/system/usr/lib/ubiquity/ /usr/lib/
+	rm -rf /usr/share/ubiquity/qt/images/
+	cp -r /tmp/snoopgod/system/usr/share/ubiquity/qt/images /usr/share/ubiquity/qt/
+	rm -f /usr/share/ubiquity/qt/breadcrumb_current.qss
+	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/breadcrumb_current.qss /usr/share/ubiquity/qt/
+	rm -f /usr/share/ubiquity/qt/style.qss
+	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/style.qss /usr/share/ubiquity/qt/
+
+	## Copy `ubiquity-slideshow`
+	rm -rf /usr/share/ubiquity-slideshow/
+	cp -r /tmp/snoopgod/system/usr/share/ubiquity-slideshow /usr/share/
+
 	# Copy the SnoopGod logo
 	cp -r /tmp/snoopgod/system/usr/share/logos /usr/share
 
@@ -521,7 +544,7 @@ function launch()
 	aptsources
 	keepsafe
 	removeunwanted
-	#kernelbuild
+	kernelbuild
 	installlibs
 	installpython
 	installjava
