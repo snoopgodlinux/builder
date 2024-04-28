@@ -384,9 +384,10 @@ function configdesktop()
 	## Configure `plymouth`
 	rm -f /usr/share/plymouth/ubuntu-logo.png
 	cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
-	rm -rf /usr/share/plymouth/themes/spinner/
-	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
-	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 180
+	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/snoopgod-spinner /usr/share/plymouth/themes/
+	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/snoopgod-text /usr/share/plymouth/themes/
+	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/snoopgod-spinner/snoopgod-spinner.plymouth" 180
+	update-alternatives --install "/usr/share/plymouth/themes/text.plymouth" "text.plymouth" "/usr/share/plymouth/themes/snoopgod-text/snoopgod-text.plymouth" 60
 	update-initramfs -u -k all
 
 	## Copy `ubiquity`
