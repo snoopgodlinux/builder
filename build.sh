@@ -407,16 +407,16 @@ function configdesktop()
 	chmod +x /usr/share/snoopgod/usr/bin/rcleaner
 
 	## Configure `plymouth`
-	sed -i "s/kubuntu-logo/snoopgod-logo/" /etc/alternatives/text.plymouth
-	sed -i "s/Kubuntu Text/SnoopGod Text/" /etc/alternatives/text.plymouth
-	sed -i "s/Kubuntu 24.04/SnoopGod 24.04/" /etc/alternatives/text.plymouth
-	rm -f /usr/share/plymouth/ubuntu-logo.png
-	cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
-	rm -rf /usr/share/plymouth/themes/spinner/
-	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
-	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 200
-	update-alternatives --auto default.plymouth 
-	update-initramfs -u -k all
+	#sed -i "s/kubuntu-logo/snoopgod-logo/" /etc/alternatives/text.plymouth
+	#sed -i "s/Kubuntu Text/SnoopGod Text/" /etc/alternatives/text.plymouth
+	#sed -i "s/Kubuntu 24.04/SnoopGod 24.04/" /etc/alternatives/text.plymouth
+	#rm -f /usr/share/plymouth/ubuntu-logo.png
+	#cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
+	#rm -rf /usr/share/plymouth/themes/spinner/
+	#cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
+	#update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 200
+	#update-alternatives --auto default.plymouth 
+	#update-initramfs -u -k all
 
 	## Copy `ubiquity`
 	rm -rf /usr/lib/ubiquity/
