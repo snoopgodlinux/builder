@@ -25,29 +25,6 @@ function clearscreen()
 	sleep 2s
 }
 
-## Warning
-## -------
-function showwarning()
-{
-	echo
-    echo -e "${texterror}*** Warning ***${textreset}"
-    echo -e "${texterror}You are about to build SnoopGod custom ISO disk${textreset}"
-    echo -e "${texterror}We recommend to exit all other programs before to proceed${textreset}"
-    echo
-    read -p "Do you want to continue? [y/N] " yn
-    case $yn in
-        [Yy]* )
-			echo
-            ;;
-        [Nn]* )
-            exit
-            ;;
-        * )
-            exit
-            ;;
-    esac
-}
-
 ## ------------------- ##
 ## PREPARE ENVIRONMENT ##
 ## ------------------- ##
@@ -368,36 +345,36 @@ function installdebs()
 ## ------------------------------
 function configdesktop()
 {
-	## Retrieve system repository
+	# Retrieve system repository
 	wget -O "/tmp/system-main.zip" "https://codeload.github.com/snoopgodlinux/system/zip/refs/heads/main"
 	unzip /tmp/system-main.zip -d /tmp/snoopgod/
 	mv /tmp/snoopgod/system-main/ /tmp/snoopgod/system/
 
-	## Create Skeleton config folder
+	# Create Skeleton config folder
 	mkdir -p /etc/skel/.config
 
-	## Create Skeleton local folder
+	# Create Skeleton local folder
 	mkdir -p /etc/skel/.local
 
-	## Setup user `bashrc`
+	# Setup user `bashrc`
 	rm -f /etc/skel/.bashrc
 	cp /tmp/snoopgod/system/etc/skel/bashrc.txt /etc/skel/.bashrc
 
-	## Setup root `bashrc`
+	# Setup root `bashrc`
 	rm -f /root/.bashrc
 	cp /tmp/snoopgod/system/root/bashrc.txt /root/.bashrc
 
-	## Copy config directory
+	# Copy config directory
 	cp -r /tmp/snoopgod/system/etc/skel/.config/* /etc/skel/.config/
 
-	## Copy local directory
+	# Copy local directory
 	#cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
 
-	## Edit system conf
+	# Edit system conf
 	sed -i "s/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=5s/" /etc/systemd/system.conf
 	sed -i "s/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/" /etc/systemd/system.conf
 
-	## Configure utilities
+	# Configure utilities
 	cp /tmp/snoopgod/system/usr/local/bin/snoopgod /usr/local/bin/
 	chmod +x /usr/local/bin/snoopgod
 	cp -r /tmp/snoopgod/system/usr/share/snoopgod /usr/share/
@@ -406,7 +383,7 @@ function configdesktop()
 	chmod +x /usr/share/snoopgod/usr/bin/ucleaner
 	chmod +x /usr/share/snoopgod/usr/bin/rcleaner
 
-	## Configure `plymouth`
+	# Configure `plymouth`
 	#sed -i "s/kubuntu-logo/snoopgod-logo/" /etc/alternatives/text.plymouth
 	#sed -i "s/Kubuntu Text/SnoopGod Text/" /etc/alternatives/text.plymouth
 	#sed -i "s/Kubuntu 24.04/SnoopGod 24.04/" /etc/alternatives/text.plymouth
@@ -418,7 +395,7 @@ function configdesktop()
 	#update-alternatives --auto default.plymouth 
 	#update-initramfs -u -k all
 
-	## Copy `ubiquity`
+	# Copy `ubiquity`
 	rm -rf /usr/lib/ubiquity/
 	cp -r /tmp/snoopgod/system/usr/lib/ubiquity/ /usr/lib/
 	rm -rf /usr/share/ubiquity/qt/images/
@@ -432,52 +409,52 @@ function configdesktop()
 	rm -f /usr/share/ubiquity/qt/style.qss
 	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/style.qss /usr/share/ubiquity/qt/
 
-	## Copy `ubiquity-slideshow`
+	# Copy `ubiquity-slideshow`
 	rm -rf /usr/share/ubiquity-slideshow/
 	cp -r /tmp/snoopgod/system/usr/share/ubiquity-slideshow /usr/share/
 
-	## Copy the SnoopGod logo
+	# Copy the SnoopGod logo
 	cp -r /tmp/snoopgod/system/usr/share/logos /usr/share
 
-	## Copy `sddm` theme
+	# Copy `sddm` theme
 	cp -r /tmp/snoopgod/system/usr/share/sddm/* /usr/share/sddm/
 
-	## Copy `sddm` configuration
+	# Copy `sddm` configuration
 	cp -r /tmp/snoopgod/system/etc/sddm.conf.d/ /etc/
 
-	## Import icons
+	# Import icons
 	cp -r /tmp/snoopgod/system/usr/share/icons/* /usr/share/icons/
 
-	## Import applications desktop
+	# Import applications desktop
 	cp /tmp/snoopgod/system/usr/share/applications/* /usr/share/applications/
 
-	## Change Screenfetch
+	# Change Screenfetch
 	rm -f /usr/bin/screenfetch
 	cp /tmp/snoopgod/system/usr/bin/screenfetch /usr/bin/
 	chmod +x /usr/bin/screenfetch
 
-	## Copy `lsb-release` configuration
+	# Copy `lsb-release` configuration
 	rm -f /etc/lsb-release
 	cp /tmp/snoopgod/system/etc/lsb-release /etc/
 
-	## Copy `os-release` configuration
+	# Copy `os-release` configuration
 	rm -f /etc/os-release
 	rm -f /usr/lib/os-release
 	cp /tmp/snoopgod/system/etc/os-release /etc/
 	cp /tmp/snoopgod/system/usr/lib/os-release /usr/lib/
 
-	## Copy wallpapers
+	# Copy wallpapers
 	rm -rf /usr/share/wallpapers/Next/
 	cp -r /tmp/snoopgod/system/usr/share/wallpapers/* /usr/share/wallpapers/
 
-	## Copy `proxychains` configuration
+	# Copy `proxychains` configuration
 	rm -f /etc/proxychains.conf
 	cp /tmp/snoopgod/system/etc/proxychains.conf /etc/
 	rm -f /usr/bin/proxychains
 	cp /tmp/snoopgod/system/usr/bin/proxychains /usr/bin/
 	chmod +x /usr/bin/proxychains
 
-	## Remove launchers
+	# Remove launchers
 	rm -rf /usr/share/applications/kde4
 	rm -f /usr/share/applications/arduino.desktop
 	rm -f /usr/share/applications/edb.desktop
@@ -499,16 +476,16 @@ function configdesktop()
 ## -------------------
 function configkde()
 {
-	## Export `offscreen` environment
+	# Export `offscreen` environment
 	export QT_QPA_PLATFORM=offscreen
 
-	## Execute Plasma customization functions
+	# Execute Plasma customization functions
 	plasma-apply-desktoptheme breeze-dark >/dev/null 2>&1
 	plasma-apply-colorscheme BreezeDark >/dev/null 2>&1
 	plasma-apply-colorscheme --accent-color gainsboro >/dev/null 2>&1
 	plasma-apply-lookandfeel -a org.kde.breezedark.desktop >/dev/null 2>&1
 
-	## Move KDE configuration files to Skeleton folder
+	# Move KDE configuration files to Skeleton folder
 	mv $HOME/.config/gtkrc /etc/skel/.config/
 	mv $HOME/.config/gtkrc-2.0 /etc/skel/.config/
 	mv $HOME/.config/kdedefaults/* /etc/skel/.config/kdedefaults/
@@ -516,7 +493,7 @@ function configkde()
 	mv $HOME/.config/plasmarc /etc/skel/.config/
 	mv $HOME/.config/Trolltech.conf /etc/skel/.config/
 
-	## dolphinrc
+	# Dolphinrc
 	kwriteconfig5 --file /etc/skel/.config/dolphinrc --group "PlacesPanel" --key "IconSize" "32"
 }
 
@@ -570,11 +547,8 @@ function launch()
     # Retrieve current datetime
 	flushtime=`date +%s.%N`
 
-	# Prepare Environment
-	clearscreen
-	showwarning
-	
 	# Execute Actions
+	clearscreen
 	changedir
 	pythonwarning
 	snoopdogdir
