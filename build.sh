@@ -388,6 +388,8 @@ function configdesktop()
 	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/snoopgod-text /usr/share/plymouth/themes/
 	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/snoopgod-spinner/snoopgod-spinner.plymouth" 180
 	update-alternatives --install "/usr/share/plymouth/themes/text.plymouth" "text.plymouth" "/usr/share/plymouth/themes/snoopgod-text/snoopgod-text.plymouth" 60
+	update-alternatives --auto default.plymouth
+	update-alternatives --auto text.plymouth
 	update-initramfs -u -k all
 
 	## Copy `ubiquity`
