@@ -77,7 +77,7 @@ function removeunwanted()
 ## ------------------------
 function kernelbuild()
 {
-	apt install --reinstall linux-headers-6.8-31 linux-headers-6.8.0-31-generic linux-image-6.8.0-31-generic
+	apt install --reinstall linux-headers-6.8.0-31-generic linux-image-6.8.0-31-generic
 }
 
 ## ----------------- ##
@@ -401,6 +401,10 @@ function configdesktop()
 	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/breadcrumb_current.qss /usr/share/ubiquity/qt/
 	rm -f /usr/share/ubiquity/qt/style.qss
 	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/style.qss /usr/share/ubiquity/qt/
+	rm -f /usr/share/ubiquity/qt/app.ui
+	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/app.ui /usr/share/ubiquity/qt/
+	rm -f /usr/share/ubiquity/qt/stepPartAuto.ui
+	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/stepPartAuto.ui /usr/share/ubiquity/qt/
 
 	## Copy `ubiquity-slideshow`
 	rm -rf /usr/share/ubiquity-slideshow/
