@@ -25,10 +25,6 @@ function clearscreen()
 	sleep 2s
 }
 
-## ------------------- ##
-## PREPARE ENVIRONMENT ##
-## ------------------- ##
-
 ## Move to `tmp` directory
 ## -----------------------
 function changedir()
@@ -36,17 +32,11 @@ function changedir()
 	cd /tmp/
 }
 
-## Export `Python` environment
-## ---------------------------
-function pythonwarning()
+## Configure environment
+## ---------------------
+function configenv()
 {
 	export PYTHONWARNINGS=ignore
-}
-
-## Build temporary working directory
-## ---------------------------------
-function snoopdogdir()
-{
 	mkdir -p /tmp/snoopgod/
 }
 
@@ -78,7 +68,7 @@ function disableapport()
 function removeunwanted()
 {
 	rm -rf /etc/libreoffice/registry
-	apt -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc \
+	apt -y purge --auto-remove elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc \
 	ktorrent ksudoku kwalletmanager libreoffice* neochat plasma-welcome skanlite skanpage thunderbird transmission xterm
 	rm -rf /etc/libreoffice/
 }
@@ -87,7 +77,7 @@ function removeunwanted()
 ## ------------------------
 function kernelbuild()
 {
-	apt install --reinstall linux-headers-6.8-31 linux-headers-6.8.0-31-generic linux-image-6.8.0-31-generic
+	#apt install --reinstall linux-headers-6.8-31 linux-headers-6.8.0-31-generic linux-image-6.8.0-31-generic
 }
 
 ## ----------------- ##
@@ -159,7 +149,7 @@ function installcommons()
 	cmake curl cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop httrack inspectrum jq \
 	kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains rake rename reprepro rhythmbox \
 	screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic \
-	swaks terminator tor torsocks trash-cli tree ubiquity ubiquity-slideshow-kubuntu wireguard wget xorriso
+	swaks terminator tor torsocks trash-cli tree wireguard wget xorriso
 }
 
 ## Install cracking tools
@@ -390,36 +380,6 @@ function configdesktop()
 	chmod +x /usr/share/snoopgod/usr/bin/ucleaner
 	chmod +x /usr/share/snoopgod/usr/bin/rcleaner
 
-	# Configure `plymouth`
-	sed -i "s/kubuntu-logo/snoopgod-logo/" /etc/alternatives/text.plymouth
-	sed -i "s/Kubuntu Text/SnoopGod Text/" /etc/alternatives/text.plymouth
-	sed -i "s/Kubuntu 24.04/SnoopGod 24.04/" /etc/alternatives/text.plymouth
-	rm -f /usr/share/plymouth/ubuntu-logo.png
-	cp /tmp/snoopgod/system/usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/
-	rm -rf /usr/share/plymouth/themes/spinner/
-	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/spinner /usr/share/plymouth/themes/
-	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/spinner/spinner.plymouth" 200
-	update-alternatives --auto default.plymouth 
-	update-initramfs -u -k all
-
-	# Copy `ubiquity`
-	rm -rf /usr/lib/ubiquity/
-	cp -r /tmp/snoopgod/system/usr/lib/ubiquity/ /usr/lib/
-	rm -rf /usr/share/ubiquity/qt/images/
-	cp -r /tmp/snoopgod/system/usr/share/ubiquity/qt/images /usr/share/ubiquity/qt/
-	rm -f /usr/share/ubiquity/qt/app.ui
-	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/app.ui /usr/share/ubiquity/qt/
-	rm -f /usr/share/ubiquity/qt/breadcrumb_current.qss
-	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/breadcrumb_current.qss /usr/share/ubiquity/qt/
-	rm -f /usr/share/ubiquity/qt/stepPartAuto.ui
-	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/stepPartAuto.ui /usr/share/ubiquity/qt/
-	rm -f /usr/share/ubiquity/qt/style.qss
-	cp /tmp/snoopgod/system/usr/share/ubiquity/qt/style.qss /usr/share/ubiquity/qt/
-
-	# Copy `ubiquity-slideshow`
-	rm -rf /usr/share/ubiquity-slideshow/
-	cp -r /tmp/snoopgod/system/usr/share/ubiquity-slideshow /usr/share/
-
 	# Copy the SnoopGod logo
 	cp -r /tmp/snoopgod/system/usr/share/logos /usr/share
 
@@ -557,8 +517,7 @@ function launch()
 	# Execute Actions
 	clearscreen
 	changedir
-	pythonwarning
-	snoopdogdir
+	configenv
 	aptsources
 	keepsafe
 	removeunwanted
