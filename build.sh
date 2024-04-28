@@ -77,7 +77,7 @@ function removeunwanted()
 ## ------------------------
 function kernelbuild()
 {
-	#apt install --reinstall linux-headers-6.8-31 linux-headers-6.8.0-31-generic linux-image-6.8.0-31-generic
+	apt install --reinstall linux-headers-6.8-31 linux-headers-6.8.0-31-generic linux-image-6.8.0-31-generic
 }
 
 ## ----------------- ##
@@ -521,7 +521,7 @@ function launch()
 	aptsources
 	keepsafe
 	removeunwanted
-	kernelbuild
+	#kernelbuild
 	installlibs
 	installpython
 	installjava
