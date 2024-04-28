@@ -296,7 +296,7 @@ function installmetasploit()
 function installprotonvpn()
 {
 	wget -O "/tmp/protonvpn-stable-release_1.0.3-3_all.deb" "https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb"
-	sudo dpkg -i /tmp/protonvpn-stable-release_1.0.3-3_all.deb
+	dpkg -i /tmp/protonvpn-stable-release_1.0.3-3_all.deb
 	apt -y update && apt -y install proton-vpn-gnome-desktop
 }
 
@@ -387,7 +387,7 @@ function configdesktop()
 	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/snoopgod-spinner /usr/share/plymouth/themes/
 	cp -r /tmp/snoopgod/system/usr/share/plymouth/themes/snoopgod-text /usr/share/plymouth/themes/
 	update-alternatives --install "/usr/share/plymouth/themes/default.plymouth" "default.plymouth" "/usr/share/plymouth/themes/snoopgod-spinner/snoopgod-spinner.plymouth" 180
-	update-alternatives --install "/usr/share/plymouth/themes/text.plymouth" "text.plymouth" "/usr/share/plymouth/themes/snoopgod-text/snoopgod-text.plymouth" 60
+	update-alternatives --install "/usr/share/plymouth/themes/text.plymouth" "text.plymouth" "/usr/share/plymouth/themes/snoopgod-text/snoopgod-text.plymouth" 80
 	update-alternatives --auto default.plymouth
 	update-alternatives --auto text.plymouth
 	update-initramfs -u -k all
