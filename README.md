@@ -1,12 +1,20 @@
 ## Builder
 
-In a virtual ```chroot``` environment simply run the following command:
+Official `builder` repository of SnoopGod Linux operating system
+
+* * *
+
+#### Installation
+
+In a virtual `chroot` environment simply run the following command:
 
 ```shell
 cd /tmp/ && wget -O - https://raw.githubusercontent.com/snoopgodlinux/builder/main/build.sh | bash
 ```
 
-### References
+* * *
+
+#### References
 
 - https://github.com/mvallim/live-custom-ubuntu-from-scratch
 - https://bugs.launchpad.net/cubic/+bug/1882346
