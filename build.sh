@@ -366,7 +366,7 @@ function configdesktop()
 	cp -r /tmp/snoopgod/system/etc/skel/.config/* /etc/skel/.config/
 
 	# Copy local directory
-	#cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
+	cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
 
 	# Edit system conf
 	sed -i "s/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=5s/" /etc/systemd/system.conf
