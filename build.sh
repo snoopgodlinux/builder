@@ -157,8 +157,8 @@ function installcommons()
 ## ----------------------
 function installcracking()
 {
-	apt -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch fcrackzip gtkhash hashcat \
-	hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack patator princeprocessor sucrack
+	apt -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch cryptsetup fcrackzip gtkhash \
+	hashcat hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack princeprocessor sucrack
 }
 
 ## Install exploitation tools
@@ -173,7 +173,7 @@ function installexploitation()
 function installforensics()
 {
 	apt -y install aesfix aeskeyfind afflib-tools chntpw dc3dd dcfldd de4dot dislocker ext3grep ext4magic extundelete fatcat flashrom foremost galleta guymager \
-	mac-robber magicrescue myrescue openocd o-saft outguess p0f parted pasco pdfcrack xmount
+	mac-robber magicrescue myrescue openocd o-saft outguess p0f parted pasco pdfcrack steghide rkhunter xmount
 }
 
 ## Install hardening tools
@@ -187,7 +187,7 @@ function installhardening()
 ## -----------------------------------
 function installgathering()
 {
-	apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer dnswalk exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 \
+	apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 \
 	parsero smbmap sntop sslsplit traceroute whois
 }
 
@@ -195,15 +195,15 @@ function installgathering()
 ## ------------------------
 function installnetworking()
 {
-	apt -y install arpwatch axel cntlm darkstat dns2tcp dnstwist dsniff ethtool firewalk ifenslave inetsim miredo nbtscan netdiscover netmask netsed onesixtyone \
-	pnscan proxytunnel
+	apt -y install arpwatch axel cntlm darkstat dns2tcp dnstwist driftnet dsniff ethtool firewalk ifenslave inetsim nbtscan netdiscover netmask netsed \
+	onesixtyone pnscan proxytunnel snort
 }
 
 ## Install reverse engineering tools
 ## ---------------------------------
 function installreverse()
 {
-	apt -y install edb-debugger valgrind yara
+	apt -y install edb-debugger flawfinder radare2 valgrind yara
 }
 
 ## Install scripts and utilities
@@ -225,14 +225,14 @@ function installsniffing()
 ## ----------------------------
 function installstressing()
 {
-	apt -y install arping dhcpig fping goldeneye hping3 slowhttptest t50 termineter
+	apt -y install arping dhcpig fping hping3 slowhttptest t50 termineter
 }
 
 ## Install vulnerability analysis tools
 ## ------------------------------------
 function installvulns()
 {
-	apt -y install afl++ dirsearch doona pocsuite3 pompem sqlmap wapiti
+	apt -y install afl++ doona pocsuite3 pompem sqlmap wapiti
 }
 
 ## Install web applications tools
@@ -247,7 +247,7 @@ function installwebapps()
 ## ----------------------
 function installwireless()
 {
-	apt -y install aircrack-ng bully cowpatty iw mdk3 mdk4 mfcuk mfoc multimon-ng pixiewps reaver wifite
+	apt -y install aircrack-ng airgraph-ng bully cowpatty iw mdk3 mdk4 mfcuk mfoc multimon-ng pixiewps reaver
 }
 
 ## ----------------------- ##
