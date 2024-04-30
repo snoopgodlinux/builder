@@ -145,12 +145,11 @@ function installfonts
 ## -----------------------
 function installcommons()
 {
-	apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf autopsy baobab binutils binwalk build-essential cabextract cherrytree \
-	cmake curl cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop httrack inspectrum jq \
-	kate kde-spectacle keepassxc locate macchanger make mtools natpmpc net-tools ninja-build openvpn pkg-config proxychains rake rename reprepro rhythmbox \
-	screen screenfetch secure-delete simplescreenrecorder sqlitebrowser socat software-properties-common software-properties-gtk squashfs-tools synaptic \
-	swaks terminator tor torsocks trash-cli tree ubiquity ubiquity-casper ubiquity-frontend-kde ubiquity-slideshow-kubuntu ubiquity-ubuntu-artwork \
-	wireguard wget xorriso
+	apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf baobab binutils build-essential cabextract cherrytree cmake curl \
+	cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop inspectrum jq kate kde-spectacle \
+	keepassxc locate make mtools natpmpc net-tools ninja-build openvpn pkg-config rake rename reprepro rhythmbox screen screenfetch secure-delete \
+	simplescreenrecorder sqlitebrowser software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli \
+	tree ubiquity ubiquity-casper ubiquity-frontend-kde ubiquity-slideshow-kubuntu ubiquity-ubuntu-artwork wireguard wget xorriso
 }
 
 ## Install cracking tools
@@ -172,8 +171,8 @@ function installexploitation()
 ## -----------------------
 function installforensics()
 {
-	apt -y install aesfix aeskeyfind afflib-tools chntpw dc3dd dcfldd de4dot dislocker ext3grep ext4magic extundelete fatcat flashrom foremost galleta guymager \
-	mac-robber magicrescue myrescue openocd o-saft outguess p0f parted pasco pdfcrack steghide rkhunter xmount
+	apt -y install aesfix aeskeyfind afflib-tools autopsy binwalk chntpw dc3dd dcfldd de4dot dislocker ext3grep ext4magic extundelete fatcat flashrom foremost \
+	galleta guymager mac-robber magicrescue myrescue openocd o-saft outguess p0f parted pasco pdfcrack steghide rkhunter xmount
 }
 
 ## Install hardening tools
@@ -195,15 +194,15 @@ function installgathering()
 ## ------------------------
 function installnetworking()
 {
-	apt -y install arpwatch axel cntlm darkstat dns2tcp dnstwist driftnet dsniff ethtool firewalk ifenslave inetsim nbtscan netdiscover netmask netsed \
-	onesixtyone pnscan proxytunnel snort
+	apt -y install arpwatch axel cntlm darkstat dns2tcp dnstwist driftnet dsniff ethtool firewalk httrack ifenslave inetsim macchanger nbtscan netdiscover \
+	netmask netsed onesixtyone pnscan proxychains proxytunnel snort
 }
 
 ## Install reverse engineering tools
 ## ---------------------------------
 function installreverse()
 {
-	apt -y install edb-debugger flawfinder radare2 valgrind yara
+	apt -y install edb-debugger flawfinder radare2 socat valgrind yara
 }
 
 ## Install scripts and utilities
