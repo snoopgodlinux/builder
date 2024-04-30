@@ -178,7 +178,7 @@ function installhardening()
 function installgathering()
 {
 	apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 \
-	parsero smbmap sntop sslsplit traceroute whois
+	parsero smbmap sntop sslsplit traceroute whois zenmap
 }
 
 ## Install networking tools
@@ -186,7 +186,7 @@ function installgathering()
 function installnetworking()
 {
 	apt -y install arpwatch axel cntlm darkstat dns2tcp dnstwist driftnet dsniff ethtool firewalk httrack ifenslave inetsim macchanger nbtscan netdiscover \
-	netmask netsed onesixtyone pnscan proxychains proxytunnel snort
+	netmask netsed onesixtyone packetsender pnscan proxychains proxytunnel snort sslscan
 }
 
 ## Install reverse engineering tools
@@ -222,7 +222,7 @@ function installstressing()
 ## ------------------------------------
 function installvulns()
 {
-	apt -y install afl++ doona pocsuite3 pompem sqlmap wapiti
+	apt -y install afl++ doona pocsuite3 sqlmap wapiti
 }
 
 ## Install web applications tools
@@ -438,6 +438,7 @@ function configdesktop()
 	# Remove launchers
 	rm -rf /usr/share/applications/kde4
 	rm -f /usr/share/applications/arduino.desktop
+	rm -f /usr/share/applications/driftnet.desktop
 	rm -f /usr/share/applications/edb.desktop
 	rm -f /usr/share/applications/ettercap.desktop
 	rm -f /usr/share/applications/gtkhash.desktop
@@ -451,6 +452,9 @@ function configdesktop()
 	rm -f /usr/share/applications/ubiquity-kdeui.desktop
 	rm -f /usr/share/applications/*-BurpSuiteCommunity.desktop
 	rm -f /usr/share/applications/*-zap.sh.desktop
+
+	# Install menus
+	wget -O - https://raw.githubusercontent.com/snoopgodlinux/menus/main/install.sh | bash
 }
 
 ## Config `kde-plasma`
