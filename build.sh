@@ -4,15 +4,6 @@
 # [Website]: https://snoopgod.com/releases/?ver=24.04.1
 # [License]: http://www.gnu.org/licenses/gpl-3.0.html
 
-## ---------------- ##
-## DEFINE VARIABLES ##
-## ---------------- ##
-
-## Colour output
-## -------------
-texterror="\033[01;31m"		# Error
-textreset="\033[00m"		# Reset
-
 ## ------------------- ##
 ## PREPARE ENVIRONMENT ##
 ## ------------------- ##
@@ -350,9 +341,6 @@ function configdesktop()
 	# Create Skeleton config folder
 	mkdir -p /etc/skel/.config
 
-	# Create Skeleton local folder
-	#mkdir -p /etc/skel/.local
-
 	# Setup user `bashrc`
 	rm -f /etc/skel/.bashrc
 	cp /tmp/snoopgod/system/etc/skel/bashrc.txt /etc/skel/.bashrc
@@ -363,9 +351,6 @@ function configdesktop()
 
 	# Copy config directory
 	cp -r /tmp/snoopgod/system/etc/skel/.config/* /etc/skel/.config/
-
-	# Copy local directory
-	#cp -r /tmp/snoopgod/system/etc/skel/.local/* /etc/skel/.local/
 
 	# Edit system conf
 	sed -i "s/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=5s/" /etc/systemd/system.conf
@@ -503,6 +488,7 @@ function cleanroot()
 {
 	rm -rf /root/.cache
 	rm -rf /root/.config
+	rm -rf /root/.git
 	rm -rf /root/.local
 	rm -rf /root/.ssh
 	rm -rf /root/.wget-hsts
