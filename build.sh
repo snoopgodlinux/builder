@@ -409,6 +409,10 @@ function configdesktop()
 	cp /tmp/snoopgod/system/usr/bin/screenfetch /usr/bin/
 	chmod +x /usr/bin/screenfetch
 
+	# Copy `debs-release` configuration
+	rm -f /etc/debs-release
+	cp /tmp/snoopgod/system/etc/debs-release /etc/
+
 	# Copy `lsb-release` configuration
 	rm -f /etc/lsb-release
 	cp /tmp/snoopgod/system/etc/lsb-release /etc/
