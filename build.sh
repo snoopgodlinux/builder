@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# [Release]: SnoopGod 24.04.1 LTS amd64
-# [Website]: https://snoopgod.com/releases/?ver=24.04.1
+# [Release]: SnoopGod 24.04.2 LTS amd64
+# [Website]: https://snoopgod.com/releases/?ver=24.04.2
 # [License]: http://www.gnu.org/licenses/gpl-3.0.html
 
 ## ------------------- ##
@@ -79,9 +79,10 @@ function kernelbuild()
 ## ------------------------
 function installlibs()
 {
-	apt -y install libbz2-dev libc6-x32 libcurl4-openssl-dev libffi-dev libfmt-dev libfuse2 libgdbm-dev libglib2.0-dev libglib2.0-dev-bin libgmp-dev \
-	libgspell-1-dev libgtkmm-3.0-dev libgtksourceviewmm-3.0-dev libhwloc-dev libncurses5-dev libnotify-bin libnss3-dev libreadline-dev libsodium-dev \
-	libspdlog-dev libsqlite3-dev libssl-dev libtool libuchardet-dev libuv1-dev libxml++2.6-dev libxml2 libxml2-dev libxslt1-dev zlib1g-dev
+	apt -y install libbz2-dev libc6-x32 libcurl4-openssl-dev libffi-dev libfmt-dev libfuse2 libgdbm-dev libglib2.0-dev libglib2.0-dev-bin \
+	libgmp-dev libgspell-1-dev libgtkmm-3.0-dev libgtksourceviewmm-3.0-dev libhwloc-dev libncurses5-dev libnotify-bin libnss3-dev \
+	libreadline-dev libsodium-dev libspdlog-dev libsqlite3-dev libssl-dev libtool libuchardet-dev libuv1-dev libxml++2.6-dev \
+	libxml2 libxml2-dev libxslt1-dev zlib1g-dev
 }
 
 ## Install `Python`
@@ -138,7 +139,7 @@ function installcommons()
 {
 	apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf baobab binutils build-essential cabextract cherrytree cmake curl \
 	cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop inspectrum jq kate kde-spectacle \
-	keepassxc locate make mtools natpmpc net-tools ninja-build openvpn pkg-config rake rename reprepro rhythmbox screen screenfetch secure-delete \
+	keepassxc locate make mtools natpmpc net-tools ninja-build openvpn polipo pkg-config rake rename reprepro rhythmbox screen screenfetch secure-delete \
 	simplescreenrecorder sqlitebrowser software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli \
 	tree ubiquity ubiquity-casper ubiquity-frontend-kde ubiquity-slideshow-kubuntu ubiquity-ubuntu-artwork wireguard wget xorriso
 }
@@ -269,8 +270,8 @@ function installburpsuite()
 ## -----------------
 function installmaltego()
 {
-	wget -O "/tmp/Maltego.v4.6.0.deb" "https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.6.0.deb"
-	dpkg -i /tmp/Maltego.v4.6.0.deb
+	wget -O "/tmp/Maltego.v4.7.0.deb" "https://downloads.maltego.com/maltego-v4/linux/Maltego.v4.7.0.deb"
+	dpkg -i /tmp/Maltego.v4.7.0.deb
 }
 
 ## Install `Metasploit`
@@ -281,21 +282,12 @@ function installmetasploit()
 	chmod +x /tmp/msfinstall && /tmp/msfinstall
 }
 
-## Install `ProtonVPN`
-## -------------------
-function installprotonvpn()
-{
-	wget -O "/tmp/protonvpn-stable-release_1.0.3-3_all.deb" "https://repo2.protonvpn.com/debian/dists/stable/main/binary-all/protonvpn-stable-release_1.0.3-3_all.deb"
-	dpkg -i /tmp/protonvpn-stable-release_1.0.3-3_all.deb
-	apt -y update && apt -y install proton-vpn-gnome-desktop
-}
-
 ## Install `TorBrowser`
 ## --------------------
 function installtorbrowser()
 {
-	wget -O "/tmp/tor-browser-linux-x86_64-13.0.14.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.14/tor-browser-linux-x86_64-13.0.14.tar.xz"
-	tar -xvf /tmp/tor-browser-linux-x86_64-13.0.14.tar.xz -C /etc/skel/
+	wget -O "/tmp/tor-browser-linux-x86_64-13.0.16.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.16/tor-browser-linux-x86_64-13.0.16.tar.xz"
+	tar -xvf /tmp/tor-browser-linux-x86_64-13.0.16.tar.xz -C /etc/skel/
 	mv /etc/skel/tor-browser /etc/skel/.torbrowser
 	rm -f /etc/skel/.torbrowser/start-tor-browser.desktop
 }
@@ -304,7 +296,7 @@ function installtorbrowser()
 ## -----------------
 function installzap()
 {
-	wget -O "/tmp/zaproxy.sh" "https://github.com/zaproxy/zaproxy/releases/download/v2.14.0/ZAP_2_14_0_unix.sh"
+	wget -O "/tmp/zaproxy.sh" "https://github.com/zaproxy/zaproxy/releases/download/v2.15.0/ZAP_2_15_0_unix.sh"
 	wget -O "/tmp/zaproxy.txt" "https://raw.githubusercontent.com/snoopgodlinux/system/main/tmp/zaproxy.txt"
 	chmod +x /tmp/zaproxy.sh && cat "/tmp/zaproxy.txt" | /tmp/zaproxy.sh
 }
@@ -358,7 +350,9 @@ function configdesktop()
 
 	# Configure utilities
 	cp /tmp/snoopgod/system/usr/local/bin/snoopgod /usr/local/bin/
+	cp /tmp/snoopgod/system/usr/local/bin/torbridge /usr/local/bin/
 	chmod +x /usr/local/bin/snoopgod
+	chmod +x /usr/local/bin/torbridge
 	cp -r /tmp/snoopgod/system/usr/share/snoopgod /usr/share/
 	chmod +x /usr/share/snoopgod/usr/bin/updater
 	chmod +x /usr/share/snoopgod/usr/bin/upgrader
@@ -567,7 +561,6 @@ function launch()
 	installburpsuite
 	installmaltego
 	installmetasploit
-	installprotonvpn
 	installtorbrowser
 	installzap
 	installdebs
