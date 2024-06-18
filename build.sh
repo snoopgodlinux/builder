@@ -396,6 +396,7 @@ function configdesktop()
 
 	# Copy `sddm` configuration
 	cp -r /tmp/snoopgod/system/etc/sddm.conf.d/ /etc/
+	cp -r /tmp/snoopgod/system/etc/sddm.conf/ /etc/
 
 	# Import icons
 	cp -r /tmp/snoopgod/system/usr/share/icons/* /usr/share/icons/
