@@ -309,12 +309,12 @@ function installzap()
 ## ------------------
 function installdebs()
 {
-	wget -O "/tmp/packages-main.zip" "https://codeload.github.com/snoopgodlinux/packages/zip/refs/heads/main"
-	unzip /tmp/packages-main.zip -d /tmp/snoopgod/
-	mv /tmp/snoopgod/packages-main/ /tmp/snoopgod/packages/
-	cd /tmp/snoopgod/packages/
-	chmod +x deb.sh && ./deb.sh
-	cd build && dpkg -i *.deb && cd /tmp/
+	#wget -O "/tmp/packages-main.zip" "https://codeload.github.com/snoopgodlinux/packages/zip/refs/heads/main"
+	#unzip /tmp/packages-main.zip -d /tmp/snoopgod/
+	#mv /tmp/snoopgod/packages-main/ /tmp/snoopgod/packages/
+	#cd /tmp/snoopgod/packages/
+	#chmod +x deb.sh && ./deb.sh
+	#cd build && dpkg -i *.deb && cd /tmp/
 }
 
 ## ------------- ##
