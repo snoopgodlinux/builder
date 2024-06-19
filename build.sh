@@ -36,8 +36,8 @@ function configenv()
 function aptsources()
 {
 	add-apt-repository -y main && add-apt-repository -y restricted && add-apt-repository -y universe && add-apt-repository -y multiverse
-	wget -O "/etc/apt/keyrings/snoopgod-pubkey.asc" "https://raw.githubusercontent.com/snoopgodlinux/system/main/etc/apt/keyrings/snoopgod-pubkey.asc"
-	wget -O "/etc/apt/sources.list.d/snoopgod.list" "https://raw.githubusercontent.com/snoopgodlinux/system/main/etc/apt/sources.list.d/snoopgod.list"
+	wget --quiet -O - https://packages.snoopgod.com/pubkey.asc | tee /etc/apt/keyrings/snoopgod-pubkey.asc
+	echo "deb [signed-by=/etc/apt/keyrings/snoopgod-pubkey.asc arch=$( dpkg --print-architecture )] https://packages.snoopgod.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/snoopgod.list
 	wget -O "/etc/apt/sources.list.d/mysteriumnetwork.list" "https://raw.githubusercontent.com/snoopgodlinux/system/main/etc/apt/sources.list.d/mysteriumnetwork.list"
 }
 
