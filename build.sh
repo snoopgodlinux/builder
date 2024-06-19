@@ -37,8 +37,10 @@ function aptsources()
 {
 	add-apt-repository -y main && add-apt-repository -y restricted && add-apt-repository -y universe && add-apt-repository -y multiverse
 	wget --quiet -O - https://packages.snoopgod.com/pubkey.asc | tee /etc/apt/keyrings/snoopgod-pubkey.asc
-	echo "deb [signed-by=/etc/apt/keyrings/snoopgod-pubkey.asc arch=$( dpkg --print-architecture )] https://packages.snoopgod.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/snoopgod.list
-	wget -O "/etc/apt/sources.list.d/mysteriumnetwork.list" "https://raw.githubusercontent.com/snoopgodlinux/system/main/etc/apt/sources.list.d/mysteriumnetwork.list"
+	echo "deb [signed-by=/etc/apt/keyrings/snoopgod-pubkey.asc arch=$( dpkg --print-architecture )] https://packages.snoopgod.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/snoopgod.list >/dev/null 2>&1
+	echo "deb http://ppa.launchpad.net/mysteriumnetwork/node/ubuntu jammy main" | tee /etc/apt/sources.list.d/mysterium.list >/dev/null 2>&1
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ECCB6A56B22C536D >/dev/null 2>&1
+	cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
 }
 
 ## Keep system safe
@@ -92,8 +94,9 @@ function installlibs()
 ## ----------------
 function installpython
 {
-	apt -y install python3-flask python3-future python3-geoip python3-httplib2 python3-nmap python3-numpy python3-paramiko python3-pip python3-psutil \
-	python3-pycurl python3-pyqt5 python3-requests python3-scapy python3-scipy python3-setuptools python3-urllib3 python3-virtualenv python3-wheel
+	apt -y install python3-bs4 python3-cairocffi python3-flask python3-future python3-geoip python3-geoip2 python3-gi python3-httplib2 \
+	python3-nmap python3-numpy python3-paramiko python3-pil python3-pip python3-psutil python3-pycurl python3-pyqt5 python3-pyqt6 \
+	python3-requests python3-scapy python3-scipy python3-setuptools python3-urllib3 python3-virtualenv python3-wheel
 	ln -s /usr/bin/python3 /usr/bin/python
 }
 
@@ -182,7 +185,7 @@ function installhardening()
 function installgathering()
 {
 	apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 \
-	parsero smbmap sntop sslsplit traceroute whois zenmap
+	parsero sherlock smbmap sntop sslsplit traceroute whois zenmap
 }
 
 ## Install networking tools
@@ -204,7 +207,7 @@ function installreverse()
 ## -----------------------------
 function installscripts()
 {
-	apt -y install polenum
+	apt -y install chkrootkit polenum
 }
 
 ## Install sniffing & spoofing tools
@@ -323,12 +326,73 @@ function installzap()
 ## ------------------
 function installdebs()
 {
-	wget -O "/tmp/packages-main.zip" "https://codeload.github.com/snoopgodlinux/packages/zip/refs/heads/main"
-	unzip /tmp/packages-main.zip -d /tmp/snoopgod/
-	mv /tmp/snoopgod/packages-main/ /tmp/snoopgod/packages/
-	cd /tmp/snoopgod/packages/
-	chmod +x deb.sh && ./deb.sh
-	cd build && dpkg -i *.deb && cd /tmp/
+	#wget -O "/tmp/packages-main.zip" "https://codeload.github.com/snoopgodlinux/packages/zip/refs/heads/main"
+	#unzip /tmp/packages-main.zip -d /tmp/snoopgod/
+	#mv /tmp/snoopgod/packages-main/ /tmp/snoopgod/packages/
+	#cd /tmp/snoopgod/packages/
+	#chmod +x deb.sh && ./deb.sh
+	#cd build && dpkg -i *.deb && cd /tmp/
+	apt -y install
+	bed
+	blueranger
+	goldeneye
+	nuclei
+	sublist3r
+	cge
+	cmsmap
+	crowbar
+	cymothoa
+	ddrescue
+	dex2jar
+	dirbuster
+	dracnmap
+	dumpzilla
+	enum4linux
+	exe2hex
+	exploitdb
+	fluxion
+	ghidra
+	gnmap
+	gpp-decrypt
+	hurl
+	iaxflood
+	jad
+	javasnoop
+	jexboss
+	jsql-injection
+	lbd
+	libenom
+	linenum
+	mitmdump
+	mitmproxy
+	mitmweb
+	nishang
+	pdf-parser
+	pdfid
+	phoneinfoga
+	powersploit
+	pwnat
+	rainbowcrack
+	reverser
+	ridenum
+	routersploit
+	rsmangler
+	rtpflood
+	sfuzz
+	sharpmeter
+	shellnoob
+	sidguesser
+	smtp-user-enum
+	sniffjoke
+	subbrute
+	thc-ssl-dos
+	tnscmd10g
+	udpflood
+	unix-privesc
+	webscarab
+	webtrace
+	wifi-honey
+	wps-breaker
 }
 
 ## ------------- ##
@@ -410,7 +474,7 @@ function configdesktop()
 
 	# Copy `sddm` configuration
 	cp -r /tmp/snoopgod/system/etc/sddm.conf.d/ /etc/
-	cp -r /tmp/snoopgod/system/etc/sddm.conf/ /etc/
+	cp /tmp/snoopgod/system/etc/sddm.conf/ /etc/
 
 	# Import icons
 	cp -r /tmp/snoopgod/system/usr/share/icons/* /usr/share/icons/
