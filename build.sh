@@ -27,7 +27,7 @@ function changedir()
 ## ---------------------
 function configenv()
 {
-	export PYTHONWARNINGS=ignore
+	export PYTHONWARNINGS="ignore"
 	mkdir -p /tmp/snoopgod/
 }
 
