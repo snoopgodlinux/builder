@@ -150,7 +150,7 @@ function installcommons()
 {
 	apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf baobab binutils build-essential cabextract cherrytree cmake curl \
 	cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop inspectrum jq kate kde-spectacle \
-	keepassxc locate make mtools natpmpc net-tools ninja-build openvpn polipo pkg-config rake rename reprepro rhythmbox screen screenfetch secure-delete \
+	keepassxc locate make mtools myst natpmpc net-tools ninja-build openvpn polipo pkg-config rake rename reprepro rhythmbox screen screenfetch secure-delete \
 	simplescreenrecorder sqlitebrowser software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli \
 	tree ubiquity ubiquity-casper ubiquity-frontend-kde ubiquity-slideshow-kubuntu ubiquity-ubuntu-artwork wireguard wget xorriso
 }
@@ -377,14 +377,16 @@ function configdesktop()
 
 	# Configure utilities
 	cp /tmp/snoopgod/system/usr/local/bin/snoopgod /usr/local/bin/
-	cp /tmp/snoopgod/system/usr/local/bin/torbridge /usr/local/bin/
 	chmod +x /usr/local/bin/snoopgod
-	chmod +x /usr/local/bin/torbridge
 	cp -r /tmp/snoopgod/system/usr/share/snoopgod /usr/share/
 	chmod +x /usr/share/snoopgod/usr/bin/updater
 	chmod +x /usr/share/snoopgod/usr/bin/upgrader
 	chmod +x /usr/share/snoopgod/usr/bin/ucleaner
 	chmod +x /usr/share/snoopgod/usr/bin/rcleaner
+
+	# Copy `torbridge` script
+	cp /tmp/snoopgod/system/usr/local/bin/torbridge /usr/local/bin/
+	chmod +x /usr/local/bin/torbridge
 
 	## Configure `plymouth`
 	rm -f /usr/share/plymouth/ubuntu-logo.png
@@ -456,6 +458,11 @@ function configdesktop()
 	rm -f /usr/bin/proxychains
 	cp /tmp/snoopgod/system/usr/bin/proxychains /usr/bin/
 	chmod +x /usr/bin/proxychains
+
+	# Copy `mystnode` configuration
+	mkdir -p /etc/mysterium-node/
+	rm -f /etc/mysterium-node/config-mainnet.toml
+	cp /tmp/snoopgod/system/etc/mysterium-node/config-mainnet.toml
 
 	# Remove launchers
 	rm -rf /usr/share/applications/kde4
