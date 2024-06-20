@@ -52,9 +52,9 @@ function aptsources()
 ## ----------------
 function keepsafe()
 {
-	apt -y update && apt -y upgrade && apt -y dist-upgrade
-	apt -y remove && apt -y autoremove
-	apt -y clean && apt -y autoclean
+	apt -q -y update && apt -q -y upgrade && apt -q -y dist-upgrade
+	apt -q -y remove && apt -q -y autoremove
+	apt -q -y clean && apt -q -y autoclean
 }
 
 ## Disable error reporting
@@ -69,7 +69,7 @@ function disableapport()
 function removeunwanted()
 {
 	rm -rf /etc/libreoffice/registry
-	apt -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc \
+	apt -q -y purge --auto-remove calamares elisa fcitx5* gstreamer1.0-vaapi haruna kcalc kcharselect kmahjongg kmines konversation kpat krdc \
 	ktorrent ksudoku kwalletmanager libreoffice* neochat plasma-welcome skanlite skanpage thunderbird transmission xterm
 	rm -rf /etc/libreoffice/
 }
@@ -89,7 +89,7 @@ function kernelbuild()
 ## ------------------------
 function installlibs()
 {
-	apt -y install libbz2-dev libc6-x32 libcurl4-openssl-dev libffi-dev libfmt-dev libfuse2 libgdbm-dev libglib2.0-dev libglib2.0-dev-bin \
+	apt -q -y install libbz2-dev libc6-x32 libcurl4-openssl-dev libffi-dev libfmt-dev libfuse2 libgdbm-dev libglib2.0-dev libglib2.0-dev-bin \
 	libgmp-dev libgspell-1-dev libgtkmm-3.0-dev libgtksourceviewmm-3.0-dev libhwloc-dev libncurses5-dev libnotify-bin libnss3-dev \
 	libreadline-dev libsodium-dev libspdlog-dev libsqlite3-dev libssl-dev libtool libuchardet-dev libuv1-dev libxml++2.6-dev \
 	libxml2 libxml2-dev libxslt1-dev zlib1g-dev
@@ -99,7 +99,7 @@ function installlibs()
 ## ----------------
 function installpython
 {
-	apt -y install python3-bs4 python3-cairocffi python3-flask python3-future python3-geoip python3-geoip2 python3-gi python3-httplib2 \
+	apt -q -y install python3-bs4 python3-cairocffi python3-flask python3-future python3-geoip python3-geoip2 python3-gi python3-httplib2 \
 	python3-nmap python3-numpy python3-paramiko python3-pil python3-pip python3-psutil python3-pycurl python3-pyqt5 python3-pyqt6 \
 	python3-requests python3-scapy python3-scipy python3-setuptools python3-urllib3 python3-virtualenv python3-wheel
 	ln -s /usr/bin/python3 /usr/bin/python
@@ -109,35 +109,35 @@ function installpython
 ## --------------
 function installjava()
 {
-	apt -y install default-jre default-jdk
+	apt -q -y install default-jre default-jdk
 }
 
 ## Install `Ruby`
 ## --------------
 function installruby()
 {
-	apt -y install ruby ruby-dev
+	apt -q -y install ruby ruby-dev
 }
 
 ## Install `Perl`
 ## --------------
 function installperl()
 {
-	apt -y install perl perl-tk
+	apt -q -y install perl perl-tk
 }
 
 ## Install `7zip`
 ## --------------
 function install7zip
 {
-	apt -y install file-roller p7zip p7zip-full p7zip-rar
+	apt -q -y install file-roller p7zip p7zip-full p7zip-rar
 }
 
 ## Install `Fonts`
 ## ---------------
 function installfonts
 {
-	apt -y install fonts-dejavu
+	apt -q -y install fonts-dejavu
 }
 
 ## ----------------------- ##
@@ -148,9 +148,9 @@ function installfonts
 ## -----------------------
 function installcommons()
 {
-	apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf baobab binutils build-essential cabextract cherrytree cmake curl \
+	apt -q -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf baobab binutils build-essential cabextract cherrytree cmake curl \
 	cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop inspectrum jq kate kde-spectacle \
-	keepassxc locate make mtools myst natpmpc net-tools ninja-build openvpn polipo pkg-config rake rename reprepro rhythmbox screen screenfetch secure-delete \
+	keepassxc locate make mtools myst natpmpc net-tools ninja-build openvpn pkg-config rake rename reprepro rhythmbox screen screenfetch secure-delete \
 	simplescreenrecorder sqlitebrowser software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli \
 	tree ubiquity ubiquity-casper ubiquity-frontend-kde ubiquity-slideshow-kubuntu ubiquity-ubuntu-artwork wireguard wget xorriso
 }
@@ -159,7 +159,7 @@ function installcommons()
 ## ----------------------
 function installcracking()
 {
-	apt -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch cryptsetup fcrackzip gtkhash \
+	apt -q -y install bruteforce-luks bruteforce-salted-openssl bruteforce-wallet brutespray ccrypt cewl changeme cmospwd crack crunch cryptsetup fcrackzip gtkhash \
 	hashcat hashdeep hashid hashrat hydra john medusa nasty ncrack ophcrack princeprocessor sucrack
 }
 
@@ -167,14 +167,14 @@ function installcracking()
 ## --------------------------
 function installexploitation()
 {
-	apt -y install websploit yersinia weevely
+	apt -q -y install websploit yersinia weevely
 }
 
 ## Install forensics tools
 ## -----------------------
 function installforensics()
 {
-	apt -y install aesfix aeskeyfind afflib-tools autopsy binwalk chntpw dc3dd dcfldd de4dot dislocker ext3grep ext4magic extundelete fatcat flashrom foremost \
+	apt -q -y install aesfix aeskeyfind afflib-tools autopsy binwalk chntpw dc3dd dcfldd de4dot dislocker ext3grep ext4magic extundelete fatcat flashrom foremost \
 	galleta guymager mac-robber magicrescue myrescue openocd o-saft outguess p0f parted pasco pdfcrack steghide rkhunter xmount
 }
 
@@ -182,14 +182,14 @@ function installforensics()
 ## -----------------------
 function installhardening()
 {
-	apt -y install apktool arduino lynis
+	apt -q -y install apktool arduino lynis
 }
 
 ## Install information gathering tools
 ## -----------------------------------
 function installgathering()
 {
-	apt -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 \
+	apt -q -y install arp-scan braa dmitry dnsenum dnsmap dnsrecon dnstracer exifprobe exiv2 fierce ike-scan masscan metacam missidentify nikto nmap nmapsi4 \
 	parsero sherlock smbmap sntop sslsplit traceroute whois zenmap
 }
 
@@ -197,7 +197,7 @@ function installgathering()
 ## ------------------------
 function installnetworking()
 {
-	apt -y install arpwatch axel cntlm darkstat dns2tcp dnstwist driftnet dsniff ethtool firewalk httrack ifenslave inetsim macchanger nbtscan netdiscover \
+	apt -q -y install arpwatch axel cntlm darkstat dns2tcp dnstwist driftnet dsniff ethtool firewalk httrack ifenslave inetsim macchanger nbtscan netdiscover \
 	netmask netsed onesixtyone packetsender pnscan proxychains proxytunnel snort sslscan
 }
 
@@ -205,21 +205,21 @@ function installnetworking()
 ## ---------------------------------
 function installreverse()
 {
-	apt -y install edb-debugger flawfinder radare2 socat valgrind yara
+	apt -q -y install edb-debugger flawfinder radare2 socat valgrind yara
 }
 
 ## Install scripts and utilities
 ## -----------------------------
 function installscripts()
 {
-	apt -y install chkrootkit polenum
+	apt -q -y install chkrootkit polenum
 }
 
 ## Install sniffing & spoofing tools
 ## ---------------------------------
 function installsniffing()
 {
-	apt -y install bettercap chaosreader ettercap-common ettercap-graphical wireshark
+	apt -q -y install bettercap chaosreader ettercap-common ettercap-graphical wireshark
 	chmod +x /usr/bin/dumpcap
 }
 
@@ -227,21 +227,21 @@ function installsniffing()
 ## ----------------------------
 function installstressing()
 {
-	apt -y install arping dhcpig fping hping3 slowhttptest t50 termineter
+	apt -q -y install arping dhcpig fping hping3 slowhttptest t50 termineter
 }
 
 ## Install vulnerability analysis tools
 ## ------------------------------------
 function installvulns()
 {
-	apt -y install afl++ doona pocsuite3 sqlmap wapiti
+	apt -q -y install afl++ doona pocsuite3 sqlmap wapiti
 }
 
 ## Install web applications tools
 ## ------------------------------
 function installwebapps()
 {
-	apt -y install dirb ffuf gobuster wfuzz wafw00f whatweb wig
+	apt -q -y install dirb ffuf gobuster wfuzz wafw00f whatweb wig
 	gem install wpscan
 }
 
@@ -249,7 +249,7 @@ function installwebapps()
 ## ----------------------
 function installwireless()
 {
-	apt -y install aircrack-ng airgraph-ng bully cowpatty iw mdk3 mdk4 mfcuk mfoc multimon-ng pixiewps reaver
+	apt -q -y install aircrack-ng airgraph-ng bully cowpatty iw mdk3 mdk4 mfcuk mfoc multimon-ng pixiewps reaver
 }
 
 ## ----------------------- ##
@@ -283,8 +283,7 @@ function installdocker()
 {
 	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-	apt -y update && apt -y install docker-ce docker-ce-cli docker-compose containerd.io
-	systemctl status docker
+	apt -q -y update && apt -q -y install docker-ce docker-ce-cli docker-compose containerd.io
 	usermod -aG docker ${USER}
 }
 
@@ -308,8 +307,8 @@ function installmetasploit()
 ## --------------------
 function installtorbrowser()
 {
-	wget -O "/tmp/tor-browser-linux-x86_64-13.0.16.tar.xz" "https://www.torproject.org/dist/torbrowser/13.0.16/tor-browser-linux-x86_64-13.0.16.tar.xz"
-	tar -xvf /tmp/tor-browser-linux-x86_64-13.0.16.tar.xz -C /etc/skel/
+	wget -O "/tmp/tor-browser-linux-x86_64-13.5.tar.xz" "https://www.torproject.org/dist/torbrowser/13.5/tor-browser-linux-x86_64-13.5.tar.xz"
+	tar -xvf /tmp/tor-browser-linux-x86_64-13.5.tar.xz -C /etc/skel/
 	mv /etc/skel/tor-browser /etc/skel/.torbrowser
 	rm -f /etc/skel/.torbrowser/start-tor-browser.desktop
 }
@@ -337,7 +336,7 @@ function installdebs()
 	#cd /tmp/snoopgod/packages/
 	#chmod +x deb.sh && ./deb.sh
 	#cd build && dpkg -i *.deb && cd /tmp/
-	apt -y install bed blueranger cge cmsmap crowbar cymothoa ddrescue dex2jar dirbuster dracnmap dumpzilla enum4linux exe2hex exploitdb \
+	apt -q -y install bed blueranger cge cmsmap crowbar cymothoa ddrescue dex2jar dirbuster dracnmap dumpzilla enum4linux exe2hex exploitdb \
 	fluxion ghidra gnmap goldeneye gophish gpp-decrypt hurl iaxflood jad javasnoop jexboss jsql-injection lbd libenom linenum mitmdump \
 	mitmproxy mitmweb netexec nishang nuclei pdf-parser pdfid phoneinfoga powersploit pwnat rainbowcrack reverser ridenum routersploit \
 	rsmangler rtpflood sfuzz sharpmeter shellnoob sidguesser smtp-user-enum sniffjoke subbrute subfinder sublist3r thc-ssl-dos tnscmd10g \
@@ -425,7 +424,7 @@ function configdesktop()
 
 	# Copy `sddm` configuration
 	cp -r /tmp/snoopgod/system/etc/sddm.conf.d/ /etc/
-	cp /tmp/snoopgod/system/etc/sddm.conf/ /etc/
+	cp /tmp/snoopgod/system/etc/sddm.conf /etc/
 
 	# Import icons
 	cp -r /tmp/snoopgod/system/usr/share/icons/* /usr/share/icons/
