@@ -41,11 +41,6 @@ function aptsources()
 	# Snoopgod repository
 	wget --quiet -O - https://packages.snoopgod.com/pubkey.asc | tee /etc/apt/keyrings/snoopgod-pubkey.asc
 	echo "deb [signed-by=/etc/apt/keyrings/snoopgod-pubkey.asc arch=$( dpkg --print-architecture )] https://packages.snoopgod.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/snoopgod.list >/dev/null 2>&1
-	
-	# MystNode repository
-	echo "deb http://ppa.launchpad.net/mysteriumnetwork/node/ubuntu jammy main" | tee /etc/apt/sources.list.d/mysterium.list >/dev/null 2>&1
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ECCB6A56B22C536D >/dev/null 2>&1
-	cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
 }
 
 ## Keep system safe
@@ -330,15 +325,9 @@ function installzap()
 ## ------------------
 function installdebs()
 {
-	#wget -O "/tmp/packages-main.zip" "https://codeload.github.com/snoopgodlinux/packages/zip/refs/heads/main"
-	#unzip /tmp/packages-main.zip -d /tmp/snoopgod/
-	#mv /tmp/snoopgod/packages-main/ /tmp/snoopgod/packages/
-	#cd /tmp/snoopgod/packages/
-	#chmod +x deb.sh && ./deb.sh
-	#cd build && dpkg -i *.deb && cd /tmp/
 	apt -y install bed blueranger cge cmsmap crowbar cymothoa ddrescue dex2jar dirbuster dracnmap dumpzilla enum4linux exe2hex exploitdb \
 	fluxion ghidra gnmap goldeneye gophish gpp-decrypt hurl iaxflood jad javasnoop jexboss jsql-injection lbd libenom linenum mitmdump \
-	mitmproxy mitmweb netexec nishang nuclei pdf-parser pdfid phoneinfoga powersploit pwnat rainbowcrack reverser ridenum routersploit \
+	mitmproxy mitmweb myst netexec nishang nuclei pdf-parser pdfid phoneinfoga powersploit pwnat rainbowcrack reverser ridenum routersploit \
 	rsmangler rtpflood sfuzz sharpmeter shellnoob sidguesser smtp-user-enum sniffjoke subbrute subfinder sublist3r thc-ssl-dos tnscmd10g \
 	trufflehog udpflood unix-privesc webscarab webtrace wifi-honey wps-breaker xsser
 }
