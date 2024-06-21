@@ -303,13 +303,6 @@ function installmetasploit()
 	chmod +x /tmp/msfinstall && /tmp/msfinstall
 }
 
-## Install `MystNode`
-## ------------------
-function installmyst()
-{
-	apt -y install myst
-}
-
 ## Install `TorBrowser`
 ## --------------------
 function installtorbrowser()
@@ -603,7 +596,6 @@ function launch()
 	installdocker
 	installmaltego
 	installmetasploit
-	installmyst
 	installtorbrowser
 	installzap
 	installdebs
