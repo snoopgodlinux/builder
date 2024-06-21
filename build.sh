@@ -327,7 +327,7 @@ function installdebs()
 {
 	apt -y install bed blueranger cge cmsmap crowbar cymothoa ddrescue dex2jar dirbuster dracnmap dumpzilla enum4linux exe2hex exploitdb \
 	fluxion ghidra gnmap goldeneye gophish gpp-decrypt hurl iaxflood jad javasnoop jexboss jsql-injection lbd libenom linenum mitmdump \
-	mitmproxy mitmweb myst netexec nishang nuclei pdf-parser pdfid phoneinfoga powersploit pwnat rainbowcrack reverser ridenum routersploit \
+	mitmproxy mitmweb netexec nishang nuclei pdf-parser pdfid phoneinfoga powersploit pwnat rainbowcrack reverser ridenum routersploit \
 	rsmangler rtpflood sfuzz sharpmeter shellnoob sidguesser smtp-user-enum sniffjoke subbrute subfinder sublist3r thc-ssl-dos tnscmd10g \
 	trufflehog udpflood unix-privesc webscarab webtrace wifi-honey wps-breaker xsser
 }
@@ -446,11 +446,6 @@ function configdesktop()
 	rm -f /usr/bin/proxychains
 	cp /tmp/snoopgod/system/usr/bin/proxychains /usr/bin/
 	chmod +x /usr/bin/proxychains
-
-	# Copy `mystnode` configuration
-	mkdir -p /etc/mysterium-node/
-	rm -f /etc/mysterium-node/config-mainnet.toml
-	cp /tmp/snoopgod/system/etc/mysterium-node/config-mainnet.toml
 
 	# Remove launchers
 	rm -rf /usr/share/applications/kde4
