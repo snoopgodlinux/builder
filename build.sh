@@ -40,7 +40,13 @@ function aptsources()
 
 	# Snoopgod repository
 	wget --quiet -O - https://packages.snoopgod.com/pubkey.asc | tee /etc/apt/keyrings/snoopgod-pubkey.asc
-	echo "deb [signed-by=/etc/apt/keyrings/snoopgod-pubkey.asc arch=$( dpkg --print-architecture )] https://packages.snoopgod.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/snoopgod.list >/dev/null 2>&1
+	echo "deb [signed-by=/etc/apt/keyrings/snoopgod-pubkey.asc arch=$( dpkg --print-architecture )] https://packages.snoopgod.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/snoopgod.list >/dev/null 2>&1
+
+	# MysteriumNetwork repository
+	echo "deb https://ppa.launchpadcontent.net/mysteriumnetwork/node-pre/ubuntu jammy main" | tee /etc/apt/sources.list.d/mysteriumnetwork.list >/dev/null 2>&1 
+	echo "deb-src https://ppa.launchpadcontent.net/mysteriumnetwork/node-pre/ubuntu jammy main" | tee -a /etc/apt/sources.list.d/mysteriumnetwork.list >/dev/null 2>&1
+	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B2233C1C4E92F82FBAA44BCCECCB6A56B22C536D >/dev/null 2>&1
+	cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
 }
 
 ## Keep system safe
@@ -145,7 +151,7 @@ function installcommons()
 {
 	apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf baobab binutils build-essential cabextract cherrytree cmake curl \
 	cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop inspectrum jq kate kde-spectacle \
-	keepassxc locate make mtools natpmpc net-tools ninja-build openvpn pkg-config rake rename reprepro rhythmbox screen screenfetch secure-delete \
+	keepassxc locate make mtools natpmpc net-tools ninja-build openvpn pkg-config rake rename reprepro rhythmbox sch screen screenfetch secure-delete \
 	simplescreenrecorder sqlitebrowser software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli \
 	tree ubiquity ubiquity-casper ubiquity-frontend-kde ubiquity-slideshow-kubuntu ubiquity-ubuntu-artwork wireguard wget xorriso
 }
@@ -321,24 +327,35 @@ function installzap()
 ## INSTALL DEBS PACKAGES ##
 ## --------------------- ##
 
-## Build Deb packages
-## ------------------
+## Install Deb packages
+## --------------------
 function installdebs()
 {
 	apt -y install bed blueranger cge cmsmap crowbar cymothoa ddrescue dex2jar dirbuster dracnmap dumpzilla enum4linux exe2hex exploitdb \
 	fluxion ghidra gnmap goldeneye gophish gpp-decrypt hurl iaxflood jad javasnoop jexboss jsql-injection lbd libenom linenum mitmdump \
-	mitmproxy mitmweb netexec nishang nuclei pdf-parser pdfid phoneinfoga powersploit pwnat rainbowcrack reverser ridenum routersploit \
-	rsmangler rtpflood sfuzz sharpmeter shellnoob sidguesser smtp-user-enum sniffjoke subbrute subfinder sublist3r thc-ssl-dos tnscmd10g \
-	trufflehog udpflood unix-privesc webscarab webtrace wifi-honey wps-breaker xsser
+	mitmproxy mitmweb mystdeploy netexec ngrok nishang nuclei pdf-parser pdfid phoneinfoga portmapper powersploit pwnat rainbowcrack \
+	reverser ridenum routersploit rsmangler rtpflood sfuzz sharpmeter shellnoob sidguesser smtp-user-enum sniffjoke subbrute subfinder \
+	sublist3r thc-ssl-dos tnscmd10g trufflehog udpflood unix-privesc webscarab webtrace wifi-honey wps-breaker xsser
+}
+
+## ---------------- ##
+## INSTALL VPN NODE ##
+## ---------------- ##
+
+## Install MysteriumNetwork
+## ------------------------
+function installmyst()
+{
+	apt -y install myst
 }
 
 ## ------------- ##
 ## CONFIG SYSTEM ##
 ## ------------- ##
 
-## Config the desktop environment
-## ------------------------------
-function configdesktop()
+## Config environment
+## ------------------
+function configenv()
 {
 	# Retrieve system repository
 	wget -O "/tmp/system-main.zip" "https://codeload.github.com/snoopgodlinux/system/zip/refs/heads/main"
@@ -583,8 +600,9 @@ function launch()
 	installtorbrowser
 	installzap
 	installdebs
+	installmyst
 	keepsafe
-	configdesktop
+	configenv
 	configkde
 	cleanroot
 	cleantmp
