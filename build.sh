@@ -23,9 +23,9 @@ function changedir()
 	cd /tmp/
 }
 
-## Configure environment
-## ---------------------
-function configenv()
+## Export environment
+## ------------------
+function exportenv()
 {
 	export PYTHONWARNINGS="ignore"
 	mkdir -p /tmp/snoopgod/
@@ -566,7 +566,7 @@ function launch()
 	# Execute Actions
 	clearscreen
 	changedir
-	configenv
+	exportenv
 	aptsources
 	keepsafe
 	removeunwanted
