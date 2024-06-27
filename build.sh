@@ -347,6 +347,7 @@ function installdebs()
 function installmyst()
 {
 	apt -y install myst
+	systemctl daemon-reload
 }
 
 ## ------------- ##
