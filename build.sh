@@ -27,6 +27,7 @@ function changedir()
 ## ------------------
 function exportenv()
 {
+	export DEBIAN_FRONTEND="noninteractive"
 	export PYTHONWARNINGS="ignore"
 	mkdir -p /tmp/snoopgod/
 }
