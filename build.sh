@@ -151,7 +151,7 @@ function installcommons()
 {
 	apt -y install abootimg android-sdk apt-transport-https apt-utils atftp autoconf baobab binutils build-essential cabextract cherrytree cmake curl \
 	cutycapt debootstrap dirmngr dkms dos2unix easytag fuse3 fwbuilder g++ gcc ghex git gnome-disk-utility gpg hexedit htop inspectrum jq kate kde-spectacle \
-	keepassxc locate make mtools natpmpc net-tools ninja-build openvpn pkg-config rake rename reprepro rhythmbox sch screen screenfetch secure-delete \
+	keepassxc locate make mtools natpmpc net-tools ninja-build openvpn pkg-config rake rename reprepro rhythmbox shc screen screenfetch secure-delete \
 	simplescreenrecorder sqlitebrowser software-properties-common software-properties-gtk squashfs-tools synaptic swaks terminator tor torsocks trash-cli \
 	tree ubiquity ubiquity-casper ubiquity-frontend-kde ubiquity-slideshow-kubuntu ubiquity-ubuntu-artwork wireguard wget xorriso
 }
