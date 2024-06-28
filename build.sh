@@ -27,7 +27,6 @@ function changedir()
 ## ------------------
 function exportenv()
 {
-	export DEBIAN_FRONTEND="noninteractive"
 	export PYTHONWARNINGS="ignore"
 	mkdir -p /tmp/snoopgod/
 }
@@ -271,16 +270,6 @@ function installburpsuite()
 	wget -O "/tmp/burpsuite.sh" "https://portswigger-cdn.net/burp/releases/download?product=community&type=Linux"
 	wget -O "/tmp/burpsuite.txt" "https://raw.githubusercontent.com/snoopgodlinux/system/main/tmp/burpsuite.txt"
 	chmod +x /tmp/burpsuite.sh && cat "/tmp/burpsuite.txt" | /tmp/burpsuite.sh
-}
-
-## Install `Docker`
-## ---------------
-function installdocker()
-{
-	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-	echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
-	apt -y update && apt -y install docker-ce docker-ce-cli docker-compose containerd.io
-	usermod -aG docker ${USER}
 }
 
 ## Install `Maltego`
@@ -578,7 +567,6 @@ function launch()
 	keepsafe
 	installbeefxss
 	installburpsuite
-	installdocker
 	installmaltego
 	installmetasploit
 	installtorbrowser
