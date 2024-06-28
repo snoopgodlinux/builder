@@ -42,12 +42,6 @@ function aptsources()
 	# Snoopgod repository
 	wget --quiet -O - https://packages.snoopgod.com/pubkey.asc | tee /etc/apt/keyrings/snoopgod-pubkey.asc
 	echo "deb [signed-by=/etc/apt/keyrings/snoopgod-pubkey.asc arch=$( dpkg --print-architecture )] https://packages.snoopgod.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/snoopgod.list >/dev/null 2>&1
-
-	# MysteriumNetwork repository
-	echo "deb https://ppa.launchpadcontent.net/mysteriumnetwork/node-pre/ubuntu jammy main" | tee /etc/apt/sources.list.d/mysteriumnetwork.list >/dev/null 2>&1 
-	echo "deb-src https://ppa.launchpadcontent.net/mysteriumnetwork/node-pre/ubuntu jammy main" | tee -a /etc/apt/sources.list.d/mysteriumnetwork.list >/dev/null 2>&1
-	apt-key adv --keyserver keyserver.ubuntu.com --recv-keys B2233C1C4E92F82FBAA44BCCECCB6A56B22C536D >/dev/null 2>&1
-	cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
 }
 
 ## Keep system safe
@@ -334,21 +328,9 @@ function installdebs()
 {
 	apt -y install bed blueranger cge cmsmap crowbar cymothoa ddrescue dex2jar dirbuster dracnmap dumpzilla enum4linux exe2hex exploitdb \
 	fluxion ghidra gnmap goldeneye gophish gpp-decrypt hurl iaxflood jad javasnoop jexboss jsql-injection lbd libenom linenum mitmdump \
-	mitmproxy mitmweb mystdeploy netexec ngrok nishang nuclei pdf-parser pdfid phoneinfoga portmapper powersploit pwnat rainbowcrack \
-	reverser ridenum routersploit rsmangler rtpflood sfuzz sharpmeter shellnoob sidguesser smtp-user-enum sniffjoke subbrute subfinder \
+	mitmproxy mitmweb netexec ngrok nishang nuclei pdf-parser pdfid phoneinfoga portmapper powersploit pwnat rainbowcrack reverser \
+	ridenum routersploit rsmangler rtpflood sfuzz sharpmeter shellnoob sidguesser smtp-user-enum sniffjoke subbrute subfinder \
 	sublist3r thc-ssl-dos tnscmd10g trufflehog udpflood unix-privesc webscarab webtrace wifi-honey wps-breaker xsser
-}
-
-## ---------------- ##
-## INSTALL VPN NODE ##
-## ---------------- ##
-
-## Install MysteriumNetwork
-## ------------------------
-function installmyst()
-{
-	apt -y install myst
-	systemctl daemon-reload
 }
 
 ## ------------- ##
@@ -602,7 +584,6 @@ function launch()
 	installtorbrowser
 	installzap
 	installdebs
-	installmyst
 	keepsafe
 	configenv
 	configkde
