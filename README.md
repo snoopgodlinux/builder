@@ -1,6 +1,6 @@
 ## Builder
 
-Official `builder` repository of SnoopGod Linux operating system
+Official `builder` repository of [SnoopGod](https://snoopgod.com) Linux operating system.
 
 * * *
 
