@@ -444,7 +444,6 @@ function configenv()
 	rm -f /usr/share/applications/driftnet.desktop
 	rm -f /usr/share/applications/edb.desktop
 	rm -f /usr/share/applications/ettercap.desktop
-	rm -f /usr/share/applications/gtkhash.desktop
 	rm -f /usr/share/applications/guymager.desktop
 	rm -f /usr/share/applications/lstopo.desktop
 	rm -f /usr/share/applications/lynis.desktop
