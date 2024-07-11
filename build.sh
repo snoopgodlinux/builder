@@ -319,8 +319,8 @@ function installdebs()
 	apt -y install bed blueranger cge cmsmap crowbar cymothoa ddrescue dex2jar dirbuster dracnmap dumpzilla enum4linux exe2hex exploitdb \
 	fluxion ghidra gnmap goldeneye gophish gpp-decrypt hurl iaxflood jad javasnoop jexboss jsql-injection lbd libenom linenum mitmdump \
 	mitmproxy mitmweb netexec ngrok nishang nuclei pdf-parser pdfid phoneinfoga portmapper powersploit pwnat rainbowcrack reverser \
-	ridenum routersploit rsmangler rtpflood sfuzz sharpmeter shellnoob sidguesser smtp-user-enum sniffjoke subbrute subfinder \
-	sublist3r thc-ssl-dos tnscmd10g trufflehog udpflood unix-privesc webscarab webtrace wifi-honey wps-breaker xsser
+	ridenum routersploit rsmangler rtpflood sfuzz sharpmeter shellnoob sidguesser smtp-user-enum sniffjoke snoopgod-maintainer subbrute \
+	subfinder sublist3r thc-ssl-dos tnscmd10g torbridge trufflehog udpflood unix-privesc webscarab webtrace wifi-honey wps-breaker xsser
 }
 
 ## ------------- ##
@@ -353,19 +353,6 @@ function configenv()
 	# Edit system conf
 	sed -i "s/#DefaultTimeoutStartSec=90s/DefaultTimeoutStartSec=5s/" /etc/systemd/system.conf
 	sed -i "s/#DefaultTimeoutStopSec=90s/DefaultTimeoutStopSec=5s/" /etc/systemd/system.conf
-
-	# Configure utilities
-	cp /tmp/snoopgod/system/usr/local/bin/snoopgod /usr/local/bin/
-	chmod +x /usr/local/bin/snoopgod
-	cp -r /tmp/snoopgod/system/usr/share/snoopgod /usr/share/
-	chmod +x /usr/share/snoopgod/usr/bin/updater
-	chmod +x /usr/share/snoopgod/usr/bin/upgrader
-	chmod +x /usr/share/snoopgod/usr/bin/ucleaner
-	chmod +x /usr/share/snoopgod/usr/bin/rcleaner
-
-	# Copy `torbridge` script
-	cp /tmp/snoopgod/system/usr/local/bin/torbridge /usr/local/bin/
-	chmod +x /usr/local/bin/torbridge
 
 	## Configure `plymouth`
 	rm -f /usr/share/plymouth/ubuntu-logo.png
@@ -447,7 +434,6 @@ function configenv()
 	rm -f /usr/share/applications/guymager.desktop
 	rm -f /usr/share/applications/lstopo.desktop
 	rm -f /usr/share/applications/lynis.desktop
-	rm -f /usr/share/applications/ophcrack.desktop
 	rm -f /usr/share/applications/org.kde.plasma.emojier.desktop
 	rm -f /usr/share/applications/org.wireshark.Wireshark.desktop
 	rm -f /usr/share/applications/texdoctk.desktop
