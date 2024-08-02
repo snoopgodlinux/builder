@@ -393,12 +393,6 @@ function configenv()
 	cp -r /tmp/snoopgod/system/etc/sddm.conf.d/ /etc/
 	cp /tmp/snoopgod/system/etc/sddm.conf /etc/
 
-	# Import icons
-	cp -r /tmp/snoopgod/system/usr/share/icons/* /usr/share/icons/
-
-	# Import applications desktop
-	cp /tmp/snoopgod/system/usr/share/applications/* /usr/share/applications/
-
 	# Change Screenfetch
 	rm -f /usr/bin/screenfetch
 	cp /tmp/snoopgod/system/usr/bin/screenfetch /usr/bin/
@@ -441,6 +435,12 @@ function configenv()
 	rm -f /usr/share/applications/*-BurpSuiteCommunity.desktop
 	rm -f /usr/share/applications/*-zap.sh.desktop
 
+	# Import icons
+	cp -r /tmp/snoopgod/system/usr/share/icons/* /usr/share/icons/
+
+	# Import applications desktop
+	cp /tmp/snoopgod/system/usr/share/applications/* /usr/share/applications/
+	
 	# Install menus
 	wget -O - https://raw.githubusercontent.com/snoopgodlinux/menus/main/install.sh | bash
 }
