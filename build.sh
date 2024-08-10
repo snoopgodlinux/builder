@@ -435,11 +435,12 @@ function configenv()
 	rm -f /usr/share/applications/*-BurpSuiteCommunity.desktop
 	rm -f /usr/share/applications/*-zap.sh.desktop
 
-	# Import icons
-	cp -r /tmp/snoopgod/system/usr/share/icons/* /usr/share/icons/
-
-	# Import applications desktop
-	cp /tmp/snoopgod/system/usr/share/applications/* /usr/share/applications/
+	# Import launchers
+	wget -O "/tmp/launchers-main.zip" "https://codeload.github.com/snoopgodlinux/launchers/zip/refs/heads/main"
+	unzip /tmp/launchers-main.zip -d /tmp/snoopgod/
+	mv /tmp/snoopgod/launchers-main/ /tmp/snoopgod/launchers/
+	cp -r /tmp/snoopgod/launchers/usr/share/icons/* /usr/share/icons/
+	cp /tmp/snoopgod/launchers/usr/share/applications/* /usr/share/applications/
 	
 	# Install menus
 	wget -O - https://raw.githubusercontent.com/snoopgodlinux/menus/main/install.sh | bash
